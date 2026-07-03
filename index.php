@@ -36,7 +36,7 @@
       <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
         <li class="nav-item"><a class="nav-link" href="hotels.html">Hotels</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Destinations</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">My Bookings</a></li>
+        <li class="nav-item"><a class="nav-link" href="my-bookings.html">My Bookings</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
         <li class="nav-item ms-lg-3">
           <a class="btn btn-outline-warning btn-sm px-3" href="login.html">Login / Sign Up</a>
@@ -516,86 +516,6 @@
   </div>
 </section>
 
-<!-- ========== APP DOWNLOAD ========== -->
-<section class="py-5 app-section">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-12 col-md-7">
-        <span class="badge bg-warning text-dark mb-3">Mobile App</span>
-        <h2 class="fw-800 mb-3">Book Hotels On the Go</h2>
-        <p class="text-muted mb-4">Download the bookHotel app for exclusive app-only deals, instant notifications, and one-tap booking. Available on iOS and Android.</p>
-        <div class="d-flex gap-3 flex-wrap">
-          <a href="#" class="app-btn d-flex align-items-center gap-2">
-            <i class="bi bi-apple fs-4"></i>
-            <div class="text-start">
-              <div style="font-size:0.65rem" class="opacity-75">Download on the</div>
-              <div class="fw-700 small">App Store</div>
-            </div>
-          </a>
-          <a href="#" class="app-btn d-flex align-items-center gap-2">
-            <i class="bi bi-google-play fs-4"></i>
-            <div class="text-start">
-              <div style="font-size:0.65rem" class="opacity-75">Get it on</div>
-              <div class="fw-700 small">Google Play</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-12 col-md-5 text-center">
-        <div class="app-mockup mx-auto">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="p-3 text-start">
-                <div class="d-flex align-items-center gap-2 mb-3">
-                  <i class="bi bi-building-fill text-warning"></i>
-                  <span class="fw-700 small">bookHotel</span>
-                </div>
-                <div class="bg-white rounded-3 p-2 mb-2 shadow-sm">
-                  <div class="text-muted" style="font-size:0.6rem">WHERE</div>
-                  <div class="fw-600" style="font-size:0.75rem">Goa, India</div>
-                </div>
-                <div class="row g-1 mb-2">
-                  <div class="col-6 bg-white rounded-3 p-2 shadow-sm">
-                    <div class="text-muted" style="font-size:0.6rem">CHECK-IN</div>
-                    <div class="fw-600" style="font-size:0.7rem">Fri, Jul 4</div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 shadow-sm">
-                    <div class="text-muted" style="font-size:0.6rem">CHECK-OUT</div>
-                    <div class="fw-600" style="font-size:0.7rem">Sun, Jul 6</div>
-                  </div>
-                </div>
-                <button class="btn btn-warning w-100 btn-sm fw-700" style="font-size:0.7rem">Search Hotels</button>
-                <div class="mt-2 bg-white rounded-3 p-2 shadow-sm d-flex gap-2 align-items-center">
-                  <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=60&q=80" width="36" height="36" class="rounded-2 object-fit-cover" alt="hotel"/>
-                  <div>
-                    <div class="fw-600" style="font-size:0.65rem">Sunset Beach Resort</div>
-                    <div class="text-warning" style="font-size:0.6rem">★ 4.6 · ₹5,499/night</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== NEWSLETTER ========== -->
-<section class="py-5 bg-primary text-white text-center">
-  <div class="container">
-    <div class="col-12 col-md-6 mx-auto">
-      <i class="bi bi-envelope-fill fs-2 mb-3"></i>
-      <h3 class="fw-800 mb-2">Get the Best Deals in Your Inbox</h3>
-      <p class="opacity-75 mb-4">Subscribe to our newsletter and never miss an exclusive hotel offer.</p>
-      <div class="input-group input-group-lg">
-        <input type="email" class="form-control border-0" placeholder="Enter your email address" aria-label="Email"/>
-        <button class="btn btn-warning fw-700 px-4">Subscribe</button>
-      </div>
-      <p class="mt-2 opacity-50" style="font-size:0.75rem">No spam, unsubscribe at any time.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ========== FOOTER ========== -->
 <footer class="bg-dark text-white pt-5 pb-3">

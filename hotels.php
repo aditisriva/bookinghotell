@@ -146,9 +146,9 @@ session_start();
           <div class="filter-group">
             <h6 class="filter-title">Guest Rating</h6>
             <div class="d-flex flex-column gap-2">
-              <label class="filter-check"><input type="checkbox" checked/><span class="ms-2">Excellent (4.5+)</span></label>
-              <label class="filter-check"><input type="checkbox" checked/><span class="ms-2">Very Good (4.0+)</span></label>
-              <label class="filter-check"><input type="checkbox"/><span class="ms-2">Good (3.5+)</span></label>
+              <label class="filter-check"><input type="checkbox" class="guest-rating-check" data-minrating="4.5" checked/><span class="ms-2">Excellent (4.5+)</span></label>
+              <label class="filter-check"><input type="checkbox" class="guest-rating-check" data-minrating="4.0" checked/><span class="ms-2">Very Good (4.0+)</span></label>
+              <label class="filter-check"><input type="checkbox" class="guest-rating-check" data-minrating="3.5"/><span class="ms-2">Good (3.5+)</span></label>
             </div>
           </div>
 
@@ -170,11 +170,11 @@ session_start();
           <div class="filter-group border-0 pb-0">
             <h6 class="filter-title">Property Type</h6>
             <div class="d-flex flex-column gap-2">
-              <label class="filter-check"><input type="checkbox" checked/><span class="ms-2">Hotel</span></label>
-              <label class="filter-check"><input type="checkbox"/><span class="ms-2">Resort</span></label>
-              <label class="filter-check"><input type="checkbox"/><span class="ms-2">Villa</span></label>
-              <label class="filter-check"><input type="checkbox"/><span class="ms-2">Homestay</span></label>
-              <label class="filter-check"><input type="checkbox"/><span class="ms-2">Boutique Hotel</span></label>
+              <label class="filter-check"><input type="checkbox" class="prop-type-check" data-proptype="hotel" checked/><span class="ms-2">Hotel</span></label>
+              <label class="filter-check"><input type="checkbox" class="prop-type-check" data-proptype="resort"/><span class="ms-2">Resort</span></label>
+              <label class="filter-check"><input type="checkbox" class="prop-type-check" data-proptype="villa"/><span class="ms-2">Villa</span></label>
+              <label class="filter-check"><input type="checkbox" class="prop-type-check" data-proptype="homestay"/><span class="ms-2">Homestay</span></label>
+              <label class="filter-check"><input type="checkbox" class="prop-type-check" data-proptype="boutique-hotel"/><span class="ms-2">Boutique Hotel</span></label>
             </div>
           </div>
         </div>
@@ -202,7 +202,7 @@ session_start();
         <div class="row g-4" id="hotelGrid">
 
           <!-- Card 1 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="4299" data-rating="4.8" data-name="The Grand Palace" data-location="mumbai">
+          <div class="col-12 col-md-6 col-xl-4" data-price="4299" data-rating="4.8" data-name="The Grand Palace" data-location="mumbai" data-type="hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" class="card-img-top hotel-img" alt="The Grand Palace"/>
@@ -234,7 +234,7 @@ session_start();
           </div>
 
           <!-- Card 2 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="5499" data-rating="4.6" data-name="Sunset Beach Resort" data-location="goa">
+          <div class="col-12 col-md-6 col-xl-4" data-price="5499" data-rating="4.6" data-name="Sunset Beach Resort" data-location="goa" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=500&q=80" class="card-img-top hotel-img" alt="Sunset Beach Resort"/>
@@ -266,7 +266,7 @@ session_start();
           </div>
 
           <!-- Card 3 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="4680" data-rating="4.9" data-name="Heritage Haveli" data-location="jaipur">
+          <div class="col-12 col-md-6 col-xl-4" data-price="4680" data-rating="4.9" data-name="Heritage Haveli" data-location="jaipur" data-type="boutique-hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&q=80" class="card-img-top hotel-img" alt="Heritage Haveli"/>
@@ -298,7 +298,7 @@ session_start();
           </div>
 
           <!-- Card 4 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="3299" data-rating="4.7" data-name="Mountain View Lodge" data-location="manali">
+          <div class="col-12 col-md-6 col-xl-4" data-price="3299" data-rating="4.7" data-name="Mountain View Lodge" data-location="manali" data-type="hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=500&q=80" class="card-img-top hotel-img" alt="Mountain View Lodge"/>
@@ -330,7 +330,7 @@ session_start();
           </div>
 
           <!-- Card 5 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="12499" data-rating="4.9" data-name="Lake Palace Udaipur" data-location="udaipur">
+          <div class="col-12 col-md-6 col-xl-4" data-price="12499" data-rating="4.9" data-name="Lake Palace Udaipur" data-location="udaipur" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=500&q=80" class="card-img-top hotel-img" alt="Lake Palace Udaipur"/>
@@ -362,7 +362,7 @@ session_start();
           </div>
 
           <!-- Card 6 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="6799" data-rating="4.8" data-name="Kerala Backwater Resort" data-location="kerala">
+          <div class="col-12 col-md-6 col-xl-4" data-price="6799" data-rating="4.8" data-name="Kerala Backwater Resort" data-location="kerala" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1582610116397-edb318620f90?w=500&q=80" class="card-img-top hotel-img" alt="Kerala Backwater Resort"/>
@@ -394,7 +394,7 @@ session_start();
           </div>
 
           <!-- Card 7 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="8799" data-rating="4.7" data-name="The Imperial Delhi" data-location="delhi">
+          <div class="col-12 col-md-6 col-xl-4" data-price="8799" data-rating="4.7" data-name="The Imperial Delhi" data-location="delhi" data-type="hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&q=80" class="card-img-top hotel-img" alt="Imperial Delhi"/>
@@ -426,7 +426,7 @@ session_start();
           </div>
 
           <!-- Card 8 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="4100" data-rating="4.5" data-name="Zen Garden Resort" data-location="kerala">
+          <div class="col-12 col-md-6 col-xl-4" data-price="4100" data-rating="4.5" data-name="Zen Garden Resort" data-location="kerala" data-type="boutique-hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=500&q=80" class="card-img-top hotel-img" alt="Zen Garden Resort"/>
@@ -458,7 +458,7 @@ session_start();
           </div>
 
           <!-- Card 9 -->
-          <div class="col-12 col-md-6 col-xl-4" data-price="5200" data-rating="4.8" data-name="Desert Bloom Luxury Camp" data-location="jaipur">
+          <div class="col-12 col-md-6 col-xl-4" data-price="5200" data-rating="4.8" data-name="Desert Bloom Luxury Camp" data-location="jaipur" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
                 <img src="https://images.unsplash.com/photo-1549294413-26f195200c16?w=500&q=80" class="card-img-top hotel-img" alt="Desert Bloom Camp"/>
@@ -613,12 +613,26 @@ session_start();
   }
 
   function applyAllFilters() {
+    const checkedRatings = [...document.querySelectorAll('.guest-rating-check:checked')]
+      .map(cb => parseFloat(cb.dataset.minrating));
+    const ratingEnabled = checkedRatings.length > 0;
+
+    const checkedTypes = [...document.querySelectorAll('.prop-type-check:checked')]
+      .map(cb => cb.dataset.proptype);
+    const typeEnabled = checkedTypes.length > 0;
+
     const filtered = allCards().filter(card => {
-      const loc   = card.getAttribute('data-location') || '';
-      const price = parseInt(card.getAttribute('data-price')) || 0;
-      const locOk   = (activeLocation === 'all') || (loc === activeLocation);
-      const priceOk = price <= maxPrice;
-      return locOk && priceOk;
+      const loc    = card.getAttribute('data-location') || '';
+      const price  = parseInt(card.getAttribute('data-price'))   || 0;
+      const rating = parseFloat(card.getAttribute('data-rating')) || 0;
+      const type   = card.getAttribute('data-type') || 'hotel';
+
+      const locOk    = (activeLocation === 'all') || (loc === activeLocation);
+      const priceOk  = price <= maxPrice;
+      const ratingOk = !ratingEnabled || checkedRatings.some(minR => rating >= minR);
+      const typeOk   = !typeEnabled   || checkedTypes.includes(type);
+
+      return locOk && priceOk && ratingOk && typeOk;
     });
 
     if (window.Pagination) {
@@ -640,6 +654,16 @@ session_start();
   document.getElementById('priceRange').addEventListener('input', function () {
     maxPrice = parseInt(this.value);
     applyAllFilters();
+  });
+
+  // Guest Rating checkboxes
+  document.querySelectorAll('.guest-rating-check').forEach(function (cb) {
+    cb.addEventListener('change', applyAllFilters);
+  });
+
+  // Property Type checkboxes
+  document.querySelectorAll('.prop-type-check').forEach(function (cb) {
+    cb.addEventListener('change', applyAllFilters);
   });
 
   // Sort by
@@ -665,6 +689,9 @@ session_start();
     cards.forEach(card => grid.appendChild(card));
     applyAllFilters();
   });
+
+  // Apply initial filter state on page load so pre-checked boxes take effect
+  applyAllFilters();
 </script>
 </body>
 </html>

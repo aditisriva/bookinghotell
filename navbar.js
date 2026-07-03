@@ -67,7 +67,7 @@
           <a href="#" class="bh-dropdown__item" role="menuitem">
             <i class="bi bi-person-circle"></i>My Profile
           </a>
-          <a href="#" class="bh-dropdown__item" role="menuitem">
+          <a href="my-bookings.html" class="bh-dropdown__item" role="menuitem">
             <i class="bi bi-receipt-cutoff"></i>My Bookings
           </a>
           <a href="#" class="bh-dropdown__item" role="menuitem">

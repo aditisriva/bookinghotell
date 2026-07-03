@@ -817,3 +817,173 @@
   .mb-timeline__step { flex-direction: row; gap: .6rem; }
   .mb-timeline__icon { width: 30px; height: 30px; font-size: .8rem; }
 }
+
+/* ================================================================
+   RESPONSIVE ENHANCEMENTS — Full Mobile/Tablet Fix
+   ================================================================ */
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  .mb-card__img-wrap { width: 180px; }
+  .mb-timeline { gap: .25rem; }
+  .mb-details-modal__grid { grid-template-columns: 1fr 1fr; gap: .75rem; }
+}
+
+/* ── Small Tablet (≤768px) ── */
+@media (max-width: 768px) {
+
+  /* Hero */
+  .mb-hero { padding: 1.75rem 0 1.5rem; }
+  .mb-hero__title { font-size: 1.6rem; letter-spacing: -.3px; }
+  .mb-hero__sub   { font-size: .85rem; }
+  .mb-hero__user  { display: none; }
+
+  /* Summary grid — 2 columns */
+  .mb-summary { padding: 1.5rem 0 1rem; margin-top: -1rem; }
+  .mb-summary__grid { grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .mb-stat-card { padding: 1rem; gap: .75rem; }
+  .mb-stat-card__icon { width: 44px; height: 44px; font-size: 1.2rem; border-radius: 10px; }
+  .mb-stat-card__num  { font-size: 1.5rem; }
+  .mb-stat-card__label{ font-size: .72rem; }
+
+  /* Controls — stack vertically */
+  .mb-controls { position: static; top: auto; padding: 1rem 0; }
+  .mb-controls__inner { flex-direction: column; align-items: stretch; gap: .75rem; }
+  .mb-search-wrap { max-width: 100%; }
+
+  /* Filter tabs — horizontal scroll */
+  .mb-tabs {
+    overflow-x: auto; flex-wrap: nowrap;
+    padding-bottom: .35rem; gap: .4rem;
+    -ms-overflow-style: none; scrollbar-width: none;
+  }
+  .mb-tabs::-webkit-scrollbar { display: none; }
+  .mb-tab { font-size: .78rem; padding: .45rem .85rem; flex-shrink: 0; }
+
+  /* Cards — stack image on top */
+  .mb-card { flex-direction: column; }
+  .mb-card__img-wrap { width: 100%; height: 200px; flex-shrink: 0; }
+  .mb-card__img { width: 100%; height: 100%; object-fit: cover; }
+  .mb-card__body { padding: 1rem; gap: .75rem; }
+
+  /* Card top row — wrap on small */
+  .mb-card__top { flex-direction: column; gap: .5rem; align-items: flex-start; }
+  .mb-card__hotel { font-size: 1.05rem; white-space: normal; }
+  .mb-card__id-wrap { text-align: left; }
+
+  /* Meta grid — 2 cols */
+  .mb-card__meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem;
+    padding: .75rem;
+  }
+  .mb-meta-sep { display: none; }
+
+  /* Timeline — vertical */
+  .mb-timeline {
+    flex-direction: column; align-items: flex-start;
+    gap: 0; padding: .85rem .9rem;
+  }
+  .mb-timeline__line {
+    width: 2px; height: 22px; min-width: unset;
+    margin: .2rem 0 .2rem 14px;
+  }
+  .mb-timeline__step  { flex-direction: row; gap: .55rem; align-items: center; }
+  .mb-timeline__icon  { width: 28px; height: 28px; font-size: .8rem; flex-shrink: 0; }
+  .mb-timeline__label { font-size: .72rem; }
+
+  /* Payment status */
+  .mb-payment-status { flex-wrap: wrap; }
+  .mb-payment-status__badge { margin-left: 0; margin-top: .25rem; }
+
+  /* Rating prompt */
+  .mb-rating-prompt { flex-direction: column; align-items: flex-start; gap: .6rem; }
+
+  /* Card footer */
+  .mb-card__footer {
+    flex-direction: column; align-items: flex-start; gap: .75rem;
+  }
+  .mb-card__actions { width: 100%; flex-wrap: wrap; gap: .5rem; }
+  .mb-card__actions .mb-btn { flex: 1 1 calc(50% - .25rem); justify-content: center; min-width: 120px; }
+
+  /* Price */
+  .mb-card__price { font-size: 1.25rem; }
+
+  /* Cancel reason */
+  .mb-cancel-reason { font-size: .78rem; }
+
+  /* Modals */
+  .mb-modal-card { padding: 1.5rem 1.25rem; border-radius: 14px; }
+  .mb-modal-actions { flex-direction: column; gap: .6rem; }
+  .mb-modal-actions .mb-btn { width: 100%; justify-content: center; }
+
+  /* Toast */
+  .mb-toast-wrap { bottom: 1rem; right: .75rem; left: .75rem; max-width: 100%; }
+  .mb-toast { font-size: .8rem; }
+}
+
+/* ── Mobile (≤480px) ── */
+@media (max-width: 480px) {
+
+  /* Hero */
+  .mb-hero { padding: 1.5rem 0 1.25rem; }
+  .mb-hero__title { font-size: 1.35rem; }
+  .mb-hero__sub   { font-size: .8rem; }
+
+  /* Breadcrumb */
+  .mb-breadcrumb .breadcrumb-item { font-size: .75rem; }
+
+  /* Summary — 2x2 grid */
+  .mb-summary__grid { grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .mb-stat-card { padding: .8rem .9rem; flex-direction: column; align-items: flex-start; gap: .5rem; }
+  .mb-stat-card__icon { width: 38px; height: 38px; font-size: 1rem; }
+  .mb-stat-card__num  { font-size: 1.3rem; }
+  .mb-stat-card__label{ font-size: .68rem; }
+
+  /* Search input */
+  .mb-search-input { font-size: .82rem; }
+
+  /* Cards */
+  .mb-card__img-wrap { height: 175px; }
+  .mb-card__body     { padding: .9rem; }
+  .mb-card__hotel    { font-size: 1rem; }
+
+  /* Meta — single column on very small */
+  .mb-card__meta { grid-template-columns: 1fr; gap: .5rem; }
+  .mb-meta-label { font-size: .65rem; }
+  .mb-meta-val   { font-size: .8rem; }
+
+  /* Action buttons — each full width */
+  .mb-card__actions .mb-btn { flex: 1 1 100%; }
+
+  /* Timeline */
+  .mb-timeline { padding: .75rem .85rem; }
+  .mb-timeline__label { font-size: .68rem; }
+
+  /* View details modal */
+  .mb-details-modal__grid { grid-template-columns: 1fr; gap: .6rem; }
+  .mb-details-modal__img-wrap { height: 150px; }
+  .mb-details-modal__body { padding: .9rem; }
+  .mb-details-modal__footer { flex-direction: column; gap: .5rem; }
+  .mb-details-modal__footer .mb-btn { width: 100%; justify-content: center; }
+  .mb-dm-item { padding: .7rem .8rem; }
+  .mb-dm-val  { font-size: .82rem; }
+
+  /* Back to top — clear from toast */
+  #backToTop { bottom: 1rem; right: 1rem; }
+
+  /* Empty state */
+  .mb-empty { padding: 3rem .75rem; }
+  .mb-empty__title { font-size: 1.15rem; }
+  .mb-empty__sub   { font-size: .82rem; }
+}
+
+/* ── Very small (≤360px) ── */
+@media (max-width: 360px) {
+  .mb-hero__title { font-size: 1.2rem; }
+  .mb-summary__grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .mb-stat-card__num { font-size: 1.15rem; }
+  .mb-tab { font-size: .72rem; padding: .4rem .7rem; }
+  .mb-card__price { font-size: 1.1rem; }
+}
