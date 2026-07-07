@@ -704,6 +704,25 @@
 
   // Apply initial filter state on page load so pre-checked boxes take effect
   applyAllFilters();
+  // -- Apply URL search params from Home page search --
+  (function() {
+    const p = new URLSearchParams(window.location.search);
+    const city = p.get('city'), ci = p.get('checkin'), co = p.get('checkout');
+    if (city) {
+      const inp = document.querySelector('input[placeholder="City, hotel or destination"]');
+      if (inp) inp.value = city;
+      document.querySelectorAll('.filter-chip').forEach(function(c) {
+        if (c.textContent.trim().toLowerCase() === city.toLowerCase()) {
+          document.querySelectorAll('.filter-chip').forEach(function(x){ x.classList.remove('active'); });
+          c.classList.add('active');
+          activeLocation = city.toLowerCase();
+        }
+      });
+      applyAllFilters();
+    }
+    if (ci)  { var el = document.getElementById('checkin');  if (el) el.value = ci; }
+    if (co)  { var el2 = document.getElementById('checkout'); if (el2) el2.value = co; }
+  })();
 </script>
 </body>
 </html>

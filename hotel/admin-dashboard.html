@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dashboard — Hotel Manager</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" crossorigin="anonymous"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="dashboard.css"/>
+</head><body>
+<div class="ds-ov" id="dsOv"></div>
+<aside class="ds-sb" id="dsSb">
+  <a href="admin-dashboard.html" class="ds-logo"><div class="ds-logo-icon"><i class="bi bi-building-fill"></i></div><div><div class="ds-logo-name">bookHotel</div><div class="ds-logo-role">Manager Portal</div></div></a>
+  <nav class="ds-nav">
+    <div class="ds-sec">Main</div>
+    <a href="admin-dashboard.html" class="ds-link active"><i class="bi bi-grid-fill"></i> Dashboard</a>
+    <a href="admin-hotel-profile.html" class="ds-link"><i class="bi bi-building"></i> Hotel Profile</a>
+    <div class="ds-sec">Operations</div>
+    <a href="admin-rooms.html" class="ds-link"><i class="bi bi-door-open-fill"></i> Rooms</a>
+    <a href="admin-bookings.html" class="ds-link"><i class="bi bi-calendar2-check-fill"></i> Bookings <span class="badge bg-danger">3</span></a>
+    <a href="admin-guests.html" class="ds-link"><i class="bi bi-people-fill"></i> Guests</a>
+    <div class="ds-sec">Insights</div>
+    <a href="admin-reviews.html" class="ds-link"><i class="bi bi-star-fill"></i> Reviews <span class="badge bg-warning text-dark">5</span></a>
+    <a href="admin-revenue.html" class="ds-link"><i class="bi bi-bar-chart-fill"></i> Revenue</a>
+    <a href="admin-notifications.html" class="ds-link"><i class="bi bi-bell-fill"></i> Notifications <span class="badge bg-primary">8</span></a>
+    <div class="ds-sec">Account</div>
+    <a href="admin-settings.html" class="ds-link"><i class="bi bi-gear-fill"></i> Settings</a>
+    <a href="index.html" class="ds-link"><i class="bi bi-box-arrow-left"></i> Back to Website</a>
+  </nav>
+  <div class="ds-foot"><a href="admin-hotel-profile.html" class="ds-hpill"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=80&q=80" alt=""/><div><div class="ds-hpill-name">The Grand Palace</div><div class="ds-hpill-status">● Active · Mumbai</div></div></a></div>
+</aside>
+<header class="ds-top">
+  <div class="ds-top-l">
+    <button class="ds-ibtn d-lg-none" id="dsTog"><i class="bi bi-list fs-5"></i></button>
+    <div><div class="ds-page-title">Dashboard</div><div class="ds-breadcrumb">Welcome back, Aditi 👋</div></div>
+  </div>
+  <div class="ds-top-r">
+    <a href="admin-notifications.html" class="ds-ibtn"><i class="bi bi-bell-fill"></i><span class="ds-dot"></span></a>
+    <div class="ds-avbtn" id="dsAvBtn"><div class="ds-av">AD</div><span class="ds-avname d-none d-sm-block">Aditi</span><i class="bi bi-chevron-down ms-1" style="font-size:.7rem;color:var(--mut)"></i>
+      <div class="ds-dropdown" id="dsAvMenu">
+        <a href="admin-settings.html" class="ds-drop-item"><i class="bi bi-person-fill text-primary"></i> My Profile</a>
+        <a href="admin-settings.html" class="ds-drop-item"><i class="bi bi-gear-fill text-primary"></i> Settings</a>
+        <hr class="my-1 mx-2"/>
+        <a href="login.html" class="ds-drop-item danger"><i class="bi bi-box-arrow-right"></i> Sign Out</a>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="ds-main">
+  <!-- Stat Row 1 -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-sm-4 col-xl-2"><div class="ds-stat blue"><div class="ds-si"><i class="bi bi-calendar2-check-fill"></i></div><div class="ds-sn">248</div><div class="ds-sl">Total Bookings</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>12% this month</div></div></div>
+    <div class="col-6 col-sm-4 col-xl-2"><div class="ds-stat green"><div class="ds-si"><i class="bi bi-box-arrow-in-right"></i></div><div class="ds-sn">14</div><div class="ds-sl">Today Check-ins</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>3 more than yesterday</div></div></div>
+    <div class="col-6 col-sm-4 col-xl-2"><div class="ds-stat purple"><div class="ds-si"><i class="bi bi-box-arrow-right"></i></div><div class="ds-sn">9</div><div class="ds-sl">Today Check-outs</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>2 less</div></div></div>
+    <div class="col-6 col-sm-4 col-xl-2"><div class="ds-stat gold"><div class="ds-si"><i class="bi bi-door-open-fill"></i></div><div class="ds-sn">30</div><div class="ds-sl">Total Rooms</div><div class="ds-tr" style="color:var(--mut)"><i class="bi bi-dash"></i>No change</div></div></div>
+    <div class="col-6 col-sm-4 col-xl-2"><div class="ds-stat green"><div class="ds-si"><i class="bi bi-check-circle-fill"></i></div><div class="ds-sn">9</div><div class="ds-sl">Available</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>2 freed today</div></div></div>
+    <div class="col-6 col-sm-4 col-xl-2"><div class="ds-stat red"><div class="ds-si"><i class="bi bi-person-fill"></i></div><div class="ds-sn">18</div><div class="ds-sl">Occupied</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>60% occupancy</div></div></div>
+  </div>
+  <!-- Stat Row 2 -->
+  <div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3"><div class="ds-stat blue"><div class="ds-si"><i class="bi bi-currency-rupee"></i></div><div class="ds-sn">₹4.2L</div><div class="ds-sl">Monthly Revenue</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>18% vs last month</div></div></div>
+    <div class="col-sm-6 col-xl-3"><div class="ds-stat orange"><div class="ds-si"><i class="bi bi-percent"></i></div><div class="ds-sn">60%</div><div class="ds-sl">Occupancy Rate</div><div class="ds-prog mt-2"><div class="ds-progf" style="width:60%;background:linear-gradient(90deg,var(--org),#fb923c)"></div></div></div></div>
+    <div class="col-sm-6 col-xl-3"><div class="ds-stat green"><div class="ds-si"><i class="bi bi-star-fill"></i></div><div class="ds-sn">4.8</div><div class="ds-sl">Avg. Rating</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>+0.2 this month</div></div></div>
+    <div class="col-sm-6 col-xl-3"><div class="ds-stat red"><div class="ds-si"><i class="bi bi-x-circle-fill"></i></div><div class="ds-sn">6</div><div class="ds-sl">Cancellations</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>2% rate</div></div></div>
+  </div>
+  <!-- Charts -->
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-xl-8">
+      <div class="ds-card"><div class="ds-ch"><div class="ds-ct"><i class="bi bi-graph-up-arrow"></i> Revenue Overview</div><select class="ds-inp ds-sel" style="width:auto;font-size:.8rem;padding:.35rem .75rem"><option>2026</option><option>2025</option></select></div><div class="ds-cb"><div class="ds-chart"><canvas id="revChart" height="260"></canvas></div></div></div>
+    </div>
+    <div class="col-12 col-xl-4">
+      <div class="ds-card h-100"><div class="ds-ch"><div class="ds-ct"><i class="bi bi-pie-chart-fill"></i> Room Occupancy</div></div><div class="ds-cb"><div class="ds-chart" style="min-height:200px"><canvas id="occChart" height="200"></canvas></div><div class="row g-2 mt-2 text-center"><div class="col-4"><div style="font-size:1.1rem;font-weight:800;color:var(--pr)">18</div><div style="font-size:.72rem;color:var(--mut)">Occupied</div></div><div class="col-4"><div style="font-size:1.1rem;font-weight:800;color:var(--grn)">9</div><div style="font-size:.72rem;color:var(--mut)">Available</div></div><div class="col-4"><div style="font-size:1.1rem;font-weight:800;color:var(--gold)">3</div><div style="font-size:.72rem;color:var(--mut)">Maint.</div></div></div></div></div>
+    </div>
+  </div>
+  <!-- Trend + Recent Bookings -->
+  <div class="row g-3">
+    <div class="col-12 col-xl-5"><div class="ds-card"><div class="ds-ch"><div class="ds-ct"><i class="bi bi-bar-chart-fill"></i> Booking Trend (Week)</div></div><div class="ds-cb"><div class="ds-chart"><canvas id="trendChart" height="220"></canvas></div></div></div></div>
+    <div class="col-12 col-xl-7">
+      <div class="ds-card"><div class="ds-ch"><div class="ds-ct"><i class="bi bi-clock-history"></i> Recent Bookings</div><a href="admin-bookings.html" class="ds-btn gho sm">View All <i class="bi bi-arrow-right"></i></a></div>
+        <div style="overflow-x:auto"><table class="ds-tbl"><thead><tr><th>ID</th><th>Guest</th><th>Room</th><th>Check-in</th><th>Amount</th><th>Status</th></tr></thead><tbody>
+          <tr><td class="fw-600">#BKH001</td><td><div class="d-flex align-items-center gap-2"><div class="ds-gav">RS</div>Rahul Sharma</div></td><td>Deluxe King</td><td>12 Jul</td><td class="fw-700 text-primary">₹8,598</td><td><span class="ds-badge confirmed"><i class="bi bi-check-circle-fill"></i>Confirmed</span></td></tr>
+          <tr><td class="fw-600">#BKH002</td><td><div class="d-flex align-items-center gap-2"><div class="ds-gav">PG</div>Priya Gupta</div></td><td>Ocean Suite</td><td>14 Jul</td><td class="fw-700 text-primary">₹16,497</td><td><span class="ds-badge checkin"><i class="bi bi-door-open"></i>Checked In</span></td></tr>
+          <tr><td class="fw-600">#BKH003</td><td><div class="d-flex align-items-center gap-2"><div class="ds-gav">AK</div>Amit Kumar</div></td><td>Standard Twin</td><td>15 Jul</td><td class="fw-700 text-primary">₹5,200</td><td><span class="ds-badge pending"><i class="bi bi-hourglass-split"></i>Pending</span></td></tr>
+          <tr><td class="fw-600">#BKH004</td><td><div class="d-flex align-items-center gap-2"><div class="ds-gav">SR</div>Sneha Rao</div></td><td>Presidential</td><td>16 Jul</td><td class="fw-700 text-primary">₹24,000</td><td><span class="ds-badge confirmed"><i class="bi bi-check-circle-fill"></i>Confirmed</span></td></tr>
+          <tr><td class="fw-600">#BKH005</td><td><div class="d-flex align-items-center gap-2"><div class="ds-gav">VJ</div>Vijay Joshi</div></td><td>Deluxe King</td><td>17 Jul</td><td class="fw-700 text-primary">₹8,598</td><td><span class="ds-badge cancelled"><i class="bi bi-x-circle-fill"></i>Cancelled</span></td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" crossorigin="anonymous"></script>
+<script src="dashboard.js"></script>
+<script>renderRevenue('revChart');renderOcc('occChart');renderTrend('trendChart');</script>
+</body></html>
