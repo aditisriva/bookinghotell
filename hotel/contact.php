@@ -1,3 +1,44 @@
+<?php
+session_start();
+require_once 'db.php';
+
+// Check if it's a POST request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Read JSON input
+    $input = json_decode(file_get_contents('php://input'), true);
+    
+    $full_name = sanitize($input['full_name'] ?? '');
+    $email     = sanitize($input['email']    ?? '');
+    $phone     = sanitize($input['phone']    ?? '');
+    $subject   = sanitize($input['subject']  ?? '');
+    $message   = sanitize($input['message']  ?? '');
+    
+    if (empty($full_name) || empty($email) || empty($subject) || empty($message)) {
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'All fields are required.']);
+        exit();
+    }
+    
+    if (!validateEmail($email)) {
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'Invalid email address.']);
+        exit();
+    }
+    
+    $sql = "INSERT INTO contact_submissions (name, email, subject, message) 
+            VALUES ('$full_name', '$email', '$subject', '$message')";
+            
+    if (mysqli_query($conn, $sql)) {
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true]);
+        exit();
+    } else {
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'Failed to save message. ' . mysqli_error($conn)]);
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -476,9 +517,9 @@
       <div class="col-6 col-md-2">
         <h6 class="fw-700 mb-3">Legal</h6>
         <ul class="list-unstyled footer-links">
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="terms-of-service.html">Terms of Use</a></li>
-          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          <li><a href="privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="terms-of-service.php">Terms of Use</a></li>
+          <li><a href="cookie-policy.php">Cookie Policy</a></li>
           <li><a href="#">Sitemap</a></li>
         </ul>
       </div>
@@ -503,15 +544,9 @@
 </button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
 <script src="navbar.js"></script>
 <script>
 'use strict';
-
-const _sb = window.supabase.createClient(
-  'https://qanadevczpeaxypcnvlb.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhbmFkZXZjenBlYXh5cGNudmxiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzMTU1OTUsImV4cCI6MjA5ODg5MTU5NX0.4oqh_XKGINFq4wHmrXvgpGHLrPlcGDwzIiJ0XTcB784'
-);
 
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
@@ -542,22 +577,37 @@ form.addEventListener('submit', async function(e) {
   submitBtn.querySelector('.ct-submit-btn__loading').classList.remove('d-none');
   submitBtn.disabled = true;
 
-  const { error } = await _sb.from('contact_submissions').insert([{
-    full_name: document.getElementById('cfName').value.trim(),
-    email:     emailEl.value.trim(),
-    phone:     document.getElementById('cfPhone').value.trim() || null,
-    subject:   document.getElementById('cfSubject').value.trim(),
-    message:   document.getElementById('cfMessage').value.trim()
-  }]);
+  let responseError = null;
+  try {
+    const response = await fetch('contact.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        full_name: document.getElementById('cfName').value.trim(),
+        email:     emailEl.value.trim(),
+        phone:     document.getElementById('cfPhone').value.trim() || null,
+        subject:   document.getElementById('cfSubject').value.trim(),
+        message:   document.getElementById('cfMessage').value.trim()
+      })
+    });
+    const result = await response.json();
+    if (result.error) {
+      responseError = result.error;
+    }
+  } catch (err) {
+    responseError = err.message;
+  }
 
   submitBtn.querySelector('.ct-submit-btn__text').classList.remove('d-none');
   submitBtn.querySelector('.ct-submit-btn__loading').classList.add('d-none');
   submitBtn.disabled = false;
 
-  if (error) {
+  if (responseError) {
     const errBox = document.createElement('div');
     errBox.className = 'alert alert-danger mt-3 small';
-    errBox.textContent = 'Failed to send message. Please try again.';
+    errBox.textContent = responseError;
     form.appendChild(errBox);
     setTimeout(() => errBox.remove(), 4000);
     return;
@@ -573,3 +623,4 @@ form.querySelectorAll('.ct-input').forEach(el => {
 </script>
 </body>
 </html>
+

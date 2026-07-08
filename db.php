@@ -9,39 +9,35 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'bookhotel_db');
+define('DB_PORT', 3307);
 
-// Create connection
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+// Create connection without selecting database first
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, null, DB_PORT);
 
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+// Create database if not exists
+$sql = "CREATE DATABASE IF NOT EXISTS " . DB_NAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
+if (!mysqli_query($conn, $sql)) {
+    die("Error creating database: " . mysqli_error($conn));
+}
+
+// Now select the database
+if (!mysqli_select_db($conn, DB_NAME)) {
+    die("Error selecting database: " . mysqli_error($conn));
+}
+
 // Set charset to utf8mb4 for full Unicode support
 mysqli_set_charset($conn, "utf8mb4");
 
 /**
- * Function to create database and tables if they don't exist
+ * Function to create tables if they don't exist
  */
 function initializeDatabase() {
-    // Create database connection without selecting database
-    $init_conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
-    
-    if (!$init_conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    
-    // Create database if not exists
-    $sql = "CREATE DATABASE IF NOT EXISTS " . DB_NAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
-    if (!mysqli_query($init_conn, $sql)) {
-        die("Error creating database: " . mysqli_error($init_conn));
-    }
-    
-    mysqli_close($init_conn);
-    
-    // Now connect to the database
-    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    global $conn;
     
     // Create users table
     $create_users_table = "CREATE TABLE IF NOT EXISTS users (
@@ -72,7 +68,7 @@ function initializeDatabase() {
         email VARCHAR(255) NOT NULL,
         token VARCHAR(255) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        expires_at TIMESTAMP NOT NULL,
+        expires_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         used TINYINT(1) DEFAULT 0,
         INDEX idx_email (email),
         INDEX idx_token (token)
@@ -97,7 +93,19 @@ function initializeDatabase() {
         die("Error creating login_attempts table: " . mysqli_error($conn));
     }
     
-    mysqli_close($conn);
+    // Create contact_submissions table
+    $create_contact_table = "CREATE TABLE IF NOT EXISTS contact_submissions (
+        id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        subject VARCHAR(255) NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+    
+    if (!mysqli_query($conn, $create_contact_table)) {
+        die("Error creating contact_submissions table: " . mysqli_error($conn));
+    }
     
     return true;
 }
@@ -217,7 +225,7 @@ function cleanOldLoginAttempts($days = 30) {
     mysqli_query($conn, $sql);
 }
 
-// Initialize database on first run (uncomment if needed)
-// initializeDatabase();
+// Initialize database on first run
+initializeDatabase();
 
 ?>

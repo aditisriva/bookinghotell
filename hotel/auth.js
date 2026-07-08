@@ -167,7 +167,7 @@ function initLoginPage() {
     sendResetBtn.textContent = 'Sending…';
 
     const { error } = await sb.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/login.html'
+      redirectTo: window.location.origin + '/login.php'
     });
 
     sendResetBtn.disabled = false;
@@ -235,20 +235,20 @@ function initLoginPage() {
 
     alertSuccess?.classList.remove('d-none');
     showToast('Signed in successfully! Welcome back 👋', 'success');
-    setTimeout(() => pageTransition('index.html'), 1200);
+    setTimeout(() => pageTransition('index.php'), 1200);
   });
 
   // Google OAuth
   document.getElementById('googleBtn')?.addEventListener('click', async () => {
     await sb.auth.signInWithOAuth({
       provider: 'google',
-      options:  { redirectTo: window.location.origin + '/index.html' }
+      options:  { redirectTo: window.location.origin + '/index.php' }
     });
   });
 
   // Transition links
   document.querySelectorAll('#goSignup, #switchToSignup').forEach(link => {
-    link.addEventListener('click', (e) => { e.preventDefault(); pageTransition('signup.html'); });
+    link.addEventListener('click', (e) => { e.preventDefault(); pageTransition('signup.php'); });
   });
 }
 
@@ -373,6 +373,7 @@ function initSignupPage() {
     showToast('Account created! Welcome to bookHotel 🎉', 'success');
     form.reset();
     if (strengthWrap) strengthWrap.style.display = 'none';
-    setTimeout(() => pageTransition('login.html'), 2000);
+    setTimeout(() => pageTransition('login.php'), 2000);
   });
 }
+

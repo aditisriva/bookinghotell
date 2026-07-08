@@ -28,7 +28,7 @@
     document.body.appendChild(overlay);
     requestAnimationFrame(() => {
       overlay.style.opacity = '1';
-      setTimeout(() => window.location.href = 'login.html', 400);
+      setTimeout(() => window.location.href = 'login.php', 400);
     });
   }
 
@@ -64,13 +64,13 @@
 
           <div class="bh-dropdown__divider"></div>
 
-          <a href="profile.html" class="bh-dropdown__item" role="menuitem">
+          <a href="profile.php" class="bh-dropdown__item" role="menuitem">
             <i class="bi bi-person-circle"></i>My Profile
           </a>
-          <a href="my-bookings.html" class="bh-dropdown__item" role="menuitem">
+          <a href="my-bookings.php" class="bh-dropdown__item" role="menuitem">
             <i class="bi bi-receipt-cutoff"></i>My Bookings
           </a>
-          <a href="wishlist.html" class="bh-dropdown__item" role="menuitem">
+          <a href="wishlist.php" class="bh-dropdown__item" role="menuitem">
             <i class="bi bi-heart-fill"></i>Wishlist
           </a>
 
@@ -92,7 +92,7 @@
 
     if (!user) {
       // logged out
-      slot.innerHTML = `<a class="btn btn-outline-warning btn-sm px-3" href="login.html">Login / Sign Up</a>`;
+      slot.innerHTML = `<a class="btn btn-outline-warning btn-sm px-3" href="login.php">Login / Sign Up</a>`;
       return;
     }
 
@@ -160,3 +160,4 @@
   }
 
 })();
+

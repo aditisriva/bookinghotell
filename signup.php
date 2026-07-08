@@ -7,7 +7,7 @@ require_once 'db.php';
 
 // Redirect if already logged in
 if (isset($_SESSION['user_id'])) {
-    header('Location: index.html');
+    header('Location: index.php');
     exit();
 }
 
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <!-- ===== LEFT PANEL ===== -->
   <div class="auth-left d-none d-lg-flex">
     <div class="auth-left-inner">
-      <a href="index.html" class="brand-logo">
+      <a href="index.php" class="brand-logo">
         <i class="bi bi-building-fill"></i>
         <span>bookHotel</span>
       </a>
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="auth-form-wrap">
 
       <!-- Mobile brand -->
-      <a href="index.html" class="brand-logo brand-logo--mobile d-flex d-lg-none">
+      <a href="index.php" class="brand-logo brand-logo--mobile d-flex d-lg-none">
         <i class="bi bi-building-fill"></i>
         <span>bookHotel</span>
       </a>
@@ -292,3 +292,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="auth.js"></script>
 </body>
 </html>
+

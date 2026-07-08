@@ -128,7 +128,7 @@ document.getElementById('cancelYes')?.addEventListener('click', () => {
         <button class="mb-btn mb-btn--ghost" onclick="openDetailsModal(this.closest('.mb-card'))">
           <i class="bi bi-eye-fill"></i> View Details
         </button>
-        <a href="hotels.html" class="mb-btn mb-btn--primary">
+        <a href="hotels.php" class="mb-btn mb-btn--primary">
           <i class="bi bi-arrow-repeat"></i> Book Again
         </a>`;
     }
@@ -325,40 +325,3 @@ window.addEventListener('scroll', () => {
   } catch (_) {}
 })();
 
-/* ─────────────────────────────────────────────
-   SUPABASE — Cancel booking in DB
-   Overrides the cancel button logic above to
-   also persist the cancellation to Supabase.
-───────────────────────────────────────────── */
-(function patchCancelWithSupabase() {
-  const SUPABASE_URL  = 'https://qanadevczpeaxypcnvlb.supabase.co';
-  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhbmFkZXZjenBlYXh5cGNudmxiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzMTU1OTUsImV4cCI6MjA5ODg5MTU5NX0.4oqh_XKGINFq4wHmrXvgpGHLrPlcGDwzIiJ0XTcB784';
-
-  // Wait for Supabase SDK to load
-  const waitSb = setInterval(() => {
-    if (!window.supabase) return;
-    clearInterval(waitSb);
-    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-
-    // Patch the cancelYes button to also update DB
-    const origYes = document.getElementById('cancelYes');
-    if (!origYes) return;
-
-    origYes.addEventListener('click', async () => {
-      if (!_cancelTarget) return;
-      const bookingId = _cancelTarget.dataset.id;
-      if (!bookingId) return;
-
-      // Update in Supabase (booking_ref matches data-id on card)
-      const { error } = await sb
-        .from('bookings')
-        .update({ status: 'cancelled', payment_status: 'refund_initiated' })
-        .eq('booking_ref', bookingId);
-
-      if (error) {
-        console.warn('Supabase cancel error:', error.message);
-        // UI update already happened in the original handler — just log
-      }
-    }, true); // capture phase so it fires after the original handler
-  }, 200);
-})();

@@ -43,7 +43,7 @@ window.Pagination = (function () {
   }
 
   /* ─────────────────────────────────────────────────
-     PUBLIC — called by filter/sort in hotels.html
+     PUBLIC — called by filter/sort in hotels.php
      Pass the array of cards that passed filters.
   ───────────────────────────────────────────────── */
   function setFiltered(cards) {
@@ -214,3 +214,4 @@ window.Pagination = (function () {
   return { setFiltered, goToPage };
 
 })();
+

@@ -482,8 +482,8 @@
       <div class="col-6 col-md-2">
         <h6 class="fw-700 mb-3">Legal</h6>
         <ul class="list-unstyled footer-links">
-          <li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Use</a></li>
-          <li><a href="cookie-policy.html">Cookie Policy</a></li><li><a href="#">Sitemap</a></li>
+          <li><a href="privacy-policy.php">Privacy Policy</a></li><li><a href="terms-of-service.php">Terms of Use</a></li>
+          <li><a href="cookie-policy.php">Cookie Policy</a></li><li><a href="#">Sitemap</a></li>
         </ul>
       </div>
     </div>
@@ -590,3 +590,4 @@ document.getElementById('logoutBtn')?.addEventListener('click', () => {
 </script>
 </body>
 </html>
+
