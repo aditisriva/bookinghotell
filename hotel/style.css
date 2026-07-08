@@ -105,11 +105,71 @@ body {
   height: 200px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  text-decoration: none;
 }
 
 .dest-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  text-decoration: none;
+}
+
+/* Loading shimmer on click */
+.dest-card.dest-card--loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26,86,219,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Zoom image on hover */
+.dest-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dest-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay gets brighter on hover */
+.dest-card .dest-overlay {
+  transition: background 0.3s ease;
+}
+
+.dest-card:hover .dest-overlay {
+  background: linear-gradient(transparent, rgba(0,0,0,0.82));
+}
+
+/* City badge indicator on hover */
+.dest-card::before {
+  content: 'Explore →';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.92);
+  color: #1a1a2e;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: all 0.3s ease;
+  z-index: 5;
+  letter-spacing: 0.04em;
+}
+
+.dest-card:hover::before {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .dest-card img {

@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
   // Dynamic page config
   $site_name    = "bookHotel";
   $site_tagline = "Hotel Booking";
@@ -15,7 +15,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><?php echo htmlspecialchars($site_name); ?> – <?php echo htmlspecialchars($site_tagline); ?></title>
+  <title><?php echo htmlspecialchars($site_name); ?> ï¿½ <?php echo htmlspecialchars($site_tagline); ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -148,78 +148,78 @@
 </section>
 
 <!-- ========== POPULAR DESTINATIONS ========== -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" id="destinations">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h2 class="fw-800 mb-1">Popular Destinations</h2>
         <p class="text-muted mb-0">Handpicked cities loved by travellers</p>
       </div>
-      <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
+      <a href="hotels.php" class="btn btn-outline-primary btn-sm">View All</a>
     </div>
     <div class="row g-3">
       <div class="col-6 col-md-3">
-        <div class="dest-card">
+        <a href="hotels.php?city=mumbai" class="dest-card" aria-label="Hotels in Mumbai">
           <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400&q=80" alt="Mumbai"/>
           <div class="dest-overlay">
             <h5 class="fw-700 mb-0">Mumbai</h5>
             <small>342 Hotels</small>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-6 col-md-3">
-        <div class="dest-card">
+        <a href="hotels.php?city=goa" class="dest-card" aria-label="Hotels in Goa">
           <img src="https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?w=400&q=80" alt="Goa"/>
           <div class="dest-overlay">
             <h5 class="fw-700 mb-0">Goa</h5>
             <small>218 Hotels</small>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-6 col-md-3">
-        <div class="dest-card">
+        <a href="hotels.php?city=delhi" class="dest-card" aria-label="Hotels in Delhi">
           <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&q=80" alt="Delhi"/>
           <div class="dest-overlay">
             <h5 class="fw-700 mb-0">Delhi</h5>
             <small>415 Hotels</small>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-6 col-md-3">
-        <div class="dest-card">
+        <a href="hotels.php?city=jaipur" class="dest-card" aria-label="Hotels in Jaipur">
           <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&q=80" alt="Jaipur"/>
           <div class="dest-overlay">
             <h5 class="fw-700 mb-0">Jaipur</h5>
             <small>187 Hotels</small>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-6 col-md-4">
-        <div class="dest-card">
-          <img src="https://th.bing.com/th/id/OIP.aY2bWZrLy8hna1aiaIunowHaEc?w=297&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Kerala"/>
+        <a href="hotels.php?city=kerala" class="dest-card" aria-label="Hotels in Kerala">
+          <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80" alt="Kerala"/>
           <div class="dest-overlay">
             <h5 class="fw-700 mb-0">Kerala</h5>
             <small>296 Hotels</small>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-6 col-md-4">
-        <div class="dest-card">
+        <a href="hotels.php?city=manali" class="dest-card" aria-label="Hotels in Manali">
           <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=400&q=80" alt="Manali"/>
           <div class="dest-overlay">
             <h5 class="fw-700 mb-0">Manali</h5>
             <small>143 Hotels</small>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-12 col-md-4">
-        <div class="dest-card">
-          <img src="https://wallpapers.com/images/hd/lake-pichola-palace-rajputana-hd-dspdgwndxa2ug3qu.jpg" alt="Udaipur"/>
+        <a href="hotels.php?city=udaipur" class="dest-card" aria-label="Hotels in Udaipur">
+          <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80" alt="Udaipur"/>
           <div class="dest-overlay">
             <h5 class="fw-700 mb-0">Udaipur</h5>
             <small>112 Hotels</small>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -366,7 +366,7 @@
   <div class="container">
     <div class="text-center mb-5">
       <h2 class="fw-800">Exclusive Deals & Offers</h2>
-      <p class="opacity-75">Limited time offers — grab them before they're gone</p>
+      <p class="opacity-75">Limited time offers ï¿½ grab them before they're gone</p>
     </div>
     <div class="row g-4">
       <div class="col-12 col-md-4">
@@ -375,7 +375,7 @@
             <div>
               <span class="badge bg-warning text-dark mb-2">Weekend Special</span>
               <h5 class="fw-700">Flat 30% Off on Weekend Stays</h5>
-              <p class="opacity-75 small mb-0">Valid on check-ins Fri – Sun. Min. 2 nights.</p>
+              <p class="opacity-75 small mb-0">Valid on check-ins Fri ï¿½ Sun. Min. 2 nights.</p>
             </div>
             <i class="bi bi-moon-stars-fill fs-2 text-warning opacity-50"></i>
           </div>
@@ -477,7 +477,7 @@
             <img src="https://i.pravatar.cc/48?img=5" class="rounded-circle" width="48" height="48" alt="Priya S"/>
             <div>
               <div class="fw-700 small">Priya Sharma</div>
-              <div class="text-muted" style="font-size:0.75rem">Mumbai · Goa Trip</div>
+              <div class="text-muted" style="font-size:0.75rem">Mumbai ï¿½ Goa Trip</div>
             </div>
           </div>
         </div>
@@ -492,7 +492,7 @@
             <img src="https://i.pravatar.cc/48?img=12" class="rounded-circle" width="48" height="48" alt="Rahul V"/>
             <div>
               <div class="fw-700 small">Rahul Verma</div>
-              <div class="text-muted" style="font-size:0.75rem">Delhi · Manali Trip</div>
+              <div class="text-muted" style="font-size:0.75rem">Delhi ï¿½ Manali Trip</div>
             </div>
           </div>
         </div>
@@ -507,7 +507,7 @@
             <img src="https://i.pravatar.cc/48?img=21" class="rounded-circle" width="48" height="48" alt="Ananya K"/>
             <div>
               <div class="fw-700 small">Ananya Kapoor</div>
-              <div class="text-muted" style="font-size:0.75rem">Bangalore · Jaipur Trip</div>
+              <div class="text-muted" style="font-size:0.75rem">Bangalore ï¿½ Jaipur Trip</div>
             </div>
           </div>
         </div>
@@ -574,7 +574,7 @@
     </div>
     <hr class="border-secondary"/>
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-      <p class="text-white-50 small mb-0">© <?php echo $current_year; ?> bookHotel Technologies Pvt. Ltd. All rights reserved.</p>
+      <p class="text-white-50 small mb-0">ï¿½ <?php echo $current_year; ?> bookHotel Technologies Pvt. Ltd. All rights reserved.</p>
       <div class="d-flex gap-2">
         <img src="https://img.shields.io/badge/Visa-1A1F71?style=flat&logo=visa&logoColor=white" height="20" alt="Visa"/>
         <img src="https://img.shields.io/badge/Mastercard-EB001B?style=flat&logo=mastercard&logoColor=white" height="20" alt="Mastercard"/>
@@ -616,7 +616,7 @@
     });
   });
 
-  // Set default dates — handled server-side by PHP (see top of file)
+  // Set default dates ï¿½ handled server-side by PHP (see top of file)
 </script>
 <script>
 function searchHotels(){

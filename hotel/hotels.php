@@ -183,6 +183,16 @@ session_start();
       <!-- ===== HOTEL LISTINGS ===== -->
       <div class="col-12 col-lg-9">
 
+        <!-- City Banner (shown when filtering by city) -->
+        <div id="cityBanner" class="d-none mb-3 p-3 rounded-3 d-flex align-items-center gap-3" style="background:linear-gradient(135deg,#e8f0fe,#dbeafe);border:1.5px solid #bfdbfe">
+          <i class="bi bi-geo-alt-fill text-primary fs-4"></i>
+          <div>
+            <div class="fw-700" id="cityBannerTitle" style="color:#1a1a2e">Hotels in Mumbai</div>
+            <div class="small text-muted">Showing all available hotels in this destination</div>
+          </div>
+          <a href="hotels.php" class="ms-auto btn btn-outline-primary btn-sm">Clear Filter</a>
+        </div>
+
         <!-- Sort Bar -->
         <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
           <p class="mb-0 text-muted small"><span class="fw-700 text-dark">9 hotels</span> found in India</p>
@@ -491,6 +501,17 @@ session_start();
 
         </div><!-- end #hotelGrid -->
 
+        <!-- Empty State — shown when no hotels match the city filter -->
+        <div id="emptyState" class="d-none text-center py-5 my-3">
+          <div style="width:100px;height:100px;background:#e8f0fe;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem">
+            <i class="bi bi-building-x" style="font-size:2.5rem;color:#1a56db"></i>
+          </div>
+          <h4 class="fw-800 mb-2" style="color:#1a1a2e">No Hotels Found</h4>
+          <p class="text-muted mb-4" id="emptyStateMsg">We couldn't find any hotels in this destination.<br/>Try a different city or browse all available hotels.</p>
+          <a href="hotels.php" class="btn btn-primary px-4 me-2"><i class="bi bi-search me-2"></i>Browse All Hotels</a>
+          <a href="index.php" class="btn btn-outline-secondary px-4"><i class="bi bi-house me-2"></i>Back to Home</a>
+        </div>
+
         <!-- Pagination — rendered dynamically by pagination.js -->
         <div class="d-flex justify-content-center mt-5">
           <nav aria-label="Hotel listing pagination">
@@ -692,6 +713,60 @@ session_start();
 
   // Apply initial filter state on page load so pre-checked boxes take effect
   applyAllFilters();
+
+  // ── Read URL city param from destination cards ──
+  (function applyURLParams() {
+    const params   = new URLSearchParams(window.location.search);
+    const city     = params.get('city');
+    const checkin  = params.get('checkin');
+    const checkout = params.get('checkout');
+
+    if (city) {
+      const cityLabel = city.charAt(0).toUpperCase() + city.slice(1);
+      document.title = 'Hotels in ' + cityLabel + ' — bookHotel';
+
+      // Show city banner
+      const banner = document.getElementById('cityBanner');
+      const bannerTitle = document.getElementById('cityBannerTitle');
+      if (banner) banner.classList.remove('d-none');
+      if (bannerTitle) bannerTitle.textContent = 'Hotels in ' + cityLabel;
+
+      // Activate matching filter chip
+      document.querySelectorAll('.filter-chip').forEach(function(chip) {
+        chip.classList.remove('active');
+        if (chip.textContent.trim().toLowerCase() === city.toLowerCase()) {
+          chip.classList.add('active');
+          activeLocation = city.toLowerCase();
+        }
+      });
+
+      // Pre-fill location search box
+      const locInput = document.querySelector('.filter-card input[type=text]');
+      if (locInput) locInput.value = cityLabel;
+    }
+
+    // Pre-fill dates
+    if (checkin)  { const el = document.getElementById('checkin');  if (el) el.value = checkin; }
+    if (checkout) { const el = document.getElementById('checkout'); if (el) el.value = checkout; }
+
+    // Re-run filters
+    applyAllFilters();
+
+    // Show empty state if 0 results after filter
+    setTimeout(function() {
+      const visible = document.querySelectorAll('#hotelGrid [data-location]:not([style*="display: none"]):not([style*="display:none"])');
+      const empty = document.getElementById('emptyState');
+      const pagination = document.getElementById('paginationList');
+      if (empty) {
+        if (visible.length === 0 && city) {
+          empty.classList.remove('d-none');
+          const msg = document.getElementById('emptyStateMsg');
+          if (msg) msg.innerHTML = 'We couldn\'t find any hotels in <strong>' + city.charAt(0).toUpperCase() + city.slice(1) + '</strong>.<br/>Try a different city or browse all available hotels.';
+          if (pagination) pagination.closest('nav').closest('div').style.display = 'none';
+        }
+      }
+    }, 100);
+  })();
 </script>
 </body>
 </html>
