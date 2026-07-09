@@ -45,7 +45,7 @@ $page_title  = $city_param ? "Hotels in $city_label" : "Find Your Perfect Hotel"
 $count_text  = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
 $sub_parts = [];
 if ($city_label)   $sub_parts[] = $city_label;
-if ($checkin_fmt && $checkout_fmt) $sub_parts[] = "$checkin_fmt → $checkout_fmt ($nights night" . ($nights>1?'s':''') . ')';
+if ($checkin_fmt && $checkout_fmt) $sub_parts[] = $checkin_fmt . " -> " . $checkout_fmt . " (" . $nights . " night" . ($nights>1?"s":"") . ")";
 if ($guests_label && $guests_raw)  $sub_parts[] = $guests_label;
 $page_sub = $count_text . ' found' . ($sub_parts ? ' · ' . implode(' · ', $sub_parts) : ' across India');
 ?>
