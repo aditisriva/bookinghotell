@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 
 // ── Read & sanitize city param from URL ──
@@ -242,6 +242,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
         <div class="row g-4" id="hotelGrid">
 
           <!-- Card 1 -->
+          <?php if (!$city_param || $city_param === 'mumbai'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="4299" data-rating="4.8" data-name="The Grand Palace" data-location="mumbai" data-type="hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -272,8 +273,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 2 -->
+          <?php if (!$city_param || $city_param === 'goa'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="5499" data-rating="4.6" data-name="Sunset Beach Resort" data-location="goa" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -304,8 +307,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 3 -->
+          <?php if (!$city_param || $city_param === 'jaipur'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="4680" data-rating="4.9" data-name="Heritage Haveli" data-location="jaipur" data-type="boutique-hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -336,8 +341,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 4 -->
+          <?php if (!$city_param || $city_param === 'manali'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="3299" data-rating="4.7" data-name="Mountain View Lodge" data-location="manali" data-type="hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -368,8 +375,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 5 -->
+          <?php if (!$city_param || $city_param === 'udaipur'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="12499" data-rating="4.9" data-name="Lake Palace Udaipur" data-location="udaipur" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -400,8 +409,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 6 -->
+          <?php if (!$city_param || $city_param === 'kerala'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="6799" data-rating="4.8" data-name="Kerala Backwater Resort" data-location="kerala" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -432,8 +443,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 7 -->
+          <?php if (!$city_param || $city_param === 'delhi'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="8799" data-rating="4.7" data-name="The Imperial Delhi" data-location="delhi" data-type="hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -464,8 +477,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 8 -->
+          <?php if (!$city_param || $city_param === 'kerala'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="4100" data-rating="4.5" data-name="Zen Garden Resort" data-location="kerala" data-type="boutique-hotel">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -496,8 +511,10 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Card 9 -->
+          <?php if (!$city_param || $city_param === 'jaipur'): ?>
           <div class="col-12 col-md-6 col-xl-4" data-price="5200" data-rating="4.8" data-name="Desert Bloom Luxury Camp" data-location="jaipur" data-type="resort">
             <div class="hotel-card card border-0 shadow-sm h-100">
               <div class="position-relative">
@@ -528,6 +545,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
         </div><!-- end #hotelGrid -->
 
