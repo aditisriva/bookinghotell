@@ -1008,3 +1008,46 @@ a.se-footer__contact-val:hover { color: var(--f-accent-lt); }
   }
   .bh-user-name { max-width: none; }
 }
+
+
+/* ===== PRICING COMPONENT ===== */
+.price-block { display:flex; flex-direction:column; gap:0; }
+.price-block__original { font-size:.78rem; color:#9ca3af; text-decoration:line-through; line-height:1.2; }
+.price-block__main { font-size:1.25rem; font-weight:800; color:#1a56db; line-height:1.1; }
+.price-block__main span { font-size:.8rem; font-weight:400; color:#6b7280; }
+.price-block__tax {
+  font-size:.72rem; color:#6b7280; line-height:1.4; margin-top:2px;
+  display:flex; align-items:center; gap:3px;
+}
+.price-block__tax i { color:#f59e0b; font-size:.7rem; }
+.price-block__total {
+  font-size:.78rem; font-weight:700; color:#059669; margin-top:2px;
+  display:flex; align-items:center; gap:3px;
+}
+.price-block__total i { font-size:.7rem; }
+
+/* Hotel card compact tax line */
+.hotel-card .price-block__tax { font-size:.7rem; }
+
+/* Pricing breakdown table (hotel-details, booking pages) */
+.price-breakdown-box {
+  background:#f8fafc; border:1px solid #e2e8f0;
+  border-radius:12px; padding:1rem; font-size:.875rem;
+}
+.price-breakdown-box .row-item {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:.35rem 0; color:#334155;
+}
+.price-breakdown-box .row-item.divider { border-top:1px dashed #e2e8f0; margin-top:.35rem; padding-top:.7rem; }
+.price-breakdown-box .row-item.total {
+  border-top:2px solid #e2e8f0; margin-top:.35rem; padding-top:.7rem;
+  font-weight:800; color:#0f172a; font-size:1rem;
+}
+.price-breakdown-box .row-item .label { color:#64748b; font-size:.82rem; }
+.price-breakdown-box .row-item .value { font-weight:600; color:#0f172a; }
+.price-breakdown-box .row-item.total .value { color:#1a56db; font-size:1.05rem; }
+.price-breakdown-box .savings-row {
+  background:#d1fae5; border-radius:8px; padding:.5rem .75rem;
+  display:flex; align-items:center; gap:.5rem; margin-top:.75rem;
+  font-size:.8rem; font-weight:700; color:#065f46;
+}

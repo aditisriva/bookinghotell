@@ -1,3 +1,4 @@
+﻿<?php require_once 'pricing.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,8 +301,12 @@
               <span class="small fw-600" id="sumBase">₹9,360</span>
             </div>
             <div class="d-flex justify-content-between mb-1">
-              <span class="small text-muted">Taxes (9%)</span>
+              <span class="small text-muted" id="sumTaxLabel">Taxes (GST)</span>
               <span class="small fw-600" id="sumTax">₹842</span>
+            </div>
+                        <div class="d-flex justify-content-between mb-1">
+              <span class="small text-muted">Service Charge</span>
+              <span class="small fw-600">₹200</span>
             </div>
             <div class="d-flex justify-content-between mb-3">
               <span class="small text-success fw-600">Discount</span>
@@ -425,9 +430,13 @@
   const ci = new Date(checkin), co = new Date(checkout);
   const nights = Math.max(1, Math.round((co - ci) / 86400000));
   const base   = room.price * nights;
-  const tax    = Math.round(base * 0.09);
+    // Dynamic GST: 0% ≤2500, 12% ≤7500, 18% >7500
+  const taxRate = room.price <= 2500 ? 0 : room.price <= 7500 ? 0.12 : 0.18;
+  const taxPct  = Math.round(taxRate * 100);
+  const svc     = 200; // service charge
+  const tax     = Math.round(base * taxRate);
   const disc   = Math.round(base * room.discount);
-  const total  = base + tax - disc;
+  const total  = base + tax - disc + svc;
 
   const fmtDate = s => new Date(s).toLocaleDateString('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
 
@@ -437,7 +446,9 @@
   document.getElementById('sumNights').textContent    = nights + ' Night' + (nights>1?'s':'');
   document.getElementById('sumBaseLabel').textContent = '₹' + room.price.toLocaleString() + ' × ' + nights + ' night' + (nights>1?'s':'');
   document.getElementById('sumBase').textContent      = '₹' + base.toLocaleString();
-  document.getElementById('sumTax').textContent       = '₹' + tax.toLocaleString();
+    document.getElementById('sumTax').textContent        = '₹' + tax.toLocaleString();
+  const taxLabelEl = document.getElementById('sumTaxLabel');
+  if (taxLabelEl) taxLabelEl.textContent = 'GST (' + taxPct + '%)';
   document.getElementById('sumDiscount').textContent  = '−₹' + disc.toLocaleString();
   document.getElementById('sumTotal').textContent     = '₹' + total.toLocaleString();
   document.getElementById('savingsAmt').textContent   = '₹' + disc.toLocaleString();

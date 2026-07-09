@@ -265,8 +265,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
-                    <span class="text-muted text-decoration-line-through small">₹6,500</span>
-                    <div class="fw-800 text-primary fs-5">₹4,299<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(4299, 6500); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -299,8 +298,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
-                    <span class="text-muted text-decoration-line-through small">₹8,000</span>
-                    <div class="fw-800 text-primary fs-5">₹5,499<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(5499, 8000); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -333,8 +331,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
-                    <span class="text-muted text-decoration-line-through small">₹7,200</span>
-                    <div class="fw-800 text-primary fs-5">₹4,680<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(4680, 7200); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -367,8 +364,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
-                    <span class="text-muted text-decoration-line-through small">₹5,500</span>
-                    <div class="fw-800 text-primary fs-5">₹3,299<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(3299, 5500); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -401,8 +397,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
-                    <span class="text-muted text-decoration-line-through small">₹18,000</span>
-                    <div class="fw-800 text-primary fs-5">₹12,499<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(12499, 18000); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -435,8 +430,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
-                    <span class="text-muted text-decoration-line-through small">₹9,000</span>
-                    <div class="fw-800 text-primary fs-5">₹6,799<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(6799, 9000); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -469,8 +463,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
-                    <span class="text-muted text-decoration-line-through small">₹11,000</span>
-                    <div class="fw-800 text-primary fs-5">₹8,799<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(8799, 11000); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -504,7 +497,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
                     <span class="text-muted text-decoration-line-through small">₹6,200</span>
-                    <div class="fw-800 text-primary fs-5">₹4,100<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(4100); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>
@@ -538,7 +531,7 @@ $count_text   = $hotel_count . ' hotel' . ($hotel_count !== 1 ? 's' : '');
                 <div class="d-flex justify-content-between align-items-center mt-auto">
                   <div>
                     <span class="text-muted text-decoration-line-through small">₹7,800</span>
-                    <div class="fw-800 text-primary fs-5">₹5,200<span class="fs-6 fw-400 text-muted">/night</span></div>
+                    <?php bhPriceBlock(5200); ?>
                   </div>
                   <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View Details</a>
                 </div>

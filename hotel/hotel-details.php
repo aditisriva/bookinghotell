@@ -1,3 +1,4 @@
+﻿<?php require_once 'pricing.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,8 +181,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                       <div>
-                        <span class="text-muted text-decoration-line-through small">₹7,200</span>
-                        <div class="fw-800 text-primary fs-5">₹4,680 <span class="fs-6 fw-400 text-muted">/ night</span></div>
+                        <?php bhPriceBlock(4680, 7200); ?>
                       </div>
                       <a href="review-booking.php?room=deluxe" class="btn btn-primary btn-sm px-4">Select</a>
                     </div>
@@ -209,8 +209,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                       <div>
-                        <span class="text-muted text-decoration-line-through small">₹14,000</span>
-                        <div class="fw-800 text-primary fs-5">₹9,800 <span class="fs-6 fw-400 text-muted">/ night</span></div>
+                        <?php bhPriceBlock(9800, 14000); ?>
                       </div>
                       <a href="review-booking.php?room=royal" class="btn btn-primary btn-sm px-4">Select</a>
                     </div>
@@ -238,8 +237,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                       <div>
-                        <span class="text-muted text-decoration-line-through small">₹28,000</span>
-                        <div class="fw-800 text-primary fs-5">₹19,500 <span class="fs-6 fw-400 text-muted">/ night</span></div>
+                        <?php bhPriceBlock(19500, 28000); ?>
                       </div>
                       <a href="review-booking.php?room=maharaja" class="btn btn-primary btn-sm px-4">Select</a>
                     </div>
@@ -392,7 +390,7 @@
             </div>
             <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Jaipur, Rajasthan</p>
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <div class="fw-800 text-primary">₹8,200<span class="fs-6 fw-400 text-muted">/night</span></div>
+                <div><?php bhPriceBlock(8200); ?></div>
               <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View</a>
             </div>
           </div>
@@ -411,7 +409,7 @@
             </div>
             <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Jaipur, Rajasthan</p>
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <div class="fw-800 text-primary">₹6,500<span class="fs-6 fw-400 text-muted">/night</span></div>
+                <div><?php bhPriceBlock(6500); ?></div>
               <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View</a>
             </div>
           </div>
@@ -430,7 +428,7 @@
             </div>
             <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Jaipur, Rajasthan</p>
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <div class="fw-800 text-primary">₹5,800<span class="fs-6 fw-400 text-muted">/night</span></div>
+                <div><?php bhPriceBlock(5800); ?></div>
               <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View</a>
             </div>
           </div>
@@ -449,7 +447,7 @@
             </div>
             <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Jaipur, Rajasthan</p>
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <div class="fw-800 text-primary">₹4,200<span class="fs-6 fw-400 text-muted">/night</span></div>
+                <div><?php bhPriceBlock(4200); ?></div>
               <a href="hotel-details.php" class="btn btn-primary btn-sm px-3">View</a>
             </div>
           </div>
@@ -545,4 +543,3 @@
 </script>
 </body>
 </html>
-

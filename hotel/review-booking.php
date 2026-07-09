@@ -1,3 +1,4 @@
+﻿<?php require_once 'pricing.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -280,8 +281,12 @@
               <span class="small fw-600" id="sumBase">₹9,360</span>
             </div>
             <div class="d-flex justify-content-between mb-2">
-              <span class="small text-muted">Taxes & Fees (9%)</span>
+              <span class="small text-muted"><span id="sumTaxPctLabel">Taxes & Fees (12% GST)</span></span>
               <span class="small fw-600" id="sumTax">₹842</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="small text-muted">Service Charge</span>
+              <span class="small fw-600" id="sumService">₹200</span>
             </div>
             <div class="d-flex justify-content-between mb-2">
               <span class="small text-success fw-600">Discount (35% OFF)</span>
@@ -436,15 +441,22 @@
   // Calc pricing
   function updatePricing(extraDiscount = 0) {
     const base     = room.price * nights;
-    const tax      = Math.round(base * 0.09);
+    const taxRate  = room.price <= 2500 ? 0 : room.price <= 7500 ? 0.12 : 0.18;
+    const taxPct   = Math.round(taxRate * 100);
+    const svc      = 200;
+    const tax      = Math.round(base * taxRate);
     const disc     = Math.round(base * (room.discount + extraDiscount));
-    const total    = base + tax - disc;
+    const total    = base + tax - disc + svc;
 
     document.getElementById('sumRoomName').textContent   = room.name;
     document.getElementById('sumNights').textContent     = nights + ' Night' + (nights>1?'s':'');
     document.getElementById('sumBaseLabel').textContent  = '₹' + room.price.toLocaleString() + ' × ' + nights + ' night' + (nights>1?'s':'');
     document.getElementById('sumBase').textContent       = '₹' + base.toLocaleString();
     document.getElementById('sumTax').textContent        = '₹' + tax.toLocaleString();
+    const taxPL = document.getElementById('sumTaxPctLabel');
+    if (taxPL) taxPL.textContent = 'GST (' + taxPct + '%)';
+    const svcEl = document.getElementById('sumService');
+    if (svcEl) svcEl.textContent = '₹' + svc.toLocaleString();
     document.getElementById('sumDiscount').textContent   = '−₹' + disc.toLocaleString();
     document.getElementById('sumTotal').textContent      = '₹' + total.toLocaleString();
     document.getElementById('savingsAmt').textContent    = '₹' + disc.toLocaleString();

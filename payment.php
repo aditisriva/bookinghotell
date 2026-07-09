@@ -1,3 +1,4 @@
+﻿<?php require_once 'pricing.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,7 +245,8 @@
             <div class="d-flex justify-content-between mb-3"><span class="small text-muted">Duration</span><span class="small fw-600" id="ordNights">2 Nights</span></div>
             <hr class="my-2"/>
             <div class="d-flex justify-content-between mb-1"><span class="small text-muted" id="ordBaseLabel">Base</span><span class="small fw-600" id="ordBase">—</span></div>
-            <div class="d-flex justify-content-between mb-1"><span class="small text-muted">Taxes (9%)</span><span class="small fw-600" id="ordTax">—</span></div>
+            <div class="d-flex justify-content-between mb-1"><span class="small text-muted" id="ordTaxLabel">GST (12%)</span><span class="small fw-600" id="ordTax">—</span></div>
+            <div class="d-flex justify-content-between mb-1"><span class="small text-muted">Service Charge</span><span class="small fw-600" id="ordService">₹200</span></div>
             <div class="d-flex justify-content-between mb-1"><span class="small text-success fw-600">Discount</span><span class="small fw-600 text-success" id="ordDiscount">—</span></div>
             <div class="d-flex justify-content-between mb-3" id="extraDiscRow" style="display:none!important">
               <span class="small text-success fw-600">Coupon</span>
@@ -350,9 +352,12 @@
   const ci = new Date(checkin), co = new Date(checkout);
   const nights = Math.max(1, Math.round((co-ci)/86400000));
   const base   = room.price * nights;
-  const tax    = Math.round(base * 0.09);
+  const taxRate = room.price <= 2500 ? 0 : room.price <= 7500 ? 0.12 : 0.18;
+  const taxPct  = Math.round(taxRate * 100);
+  const svc     = 200;
+  const tax     = Math.round(base * taxRate);
   const disc   = Math.round(base * room.discount);
-  let   total  = base + tax - disc;
+  let   total  = base + tax - disc + svc;
   let   extraDisc = 0;
 
   const fmtDate = s => new Date(s).toLocaleDateString('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
@@ -364,6 +369,10 @@
   document.getElementById('ordBaseLabel').textContent = '₹'+room.price.toLocaleString()+' × '+nights+' night'+(nights>1?'s':'');
   document.getElementById('ordBase').textContent      = '₹'+base.toLocaleString();
   document.getElementById('ordTax').textContent       = '₹'+tax.toLocaleString();
+  const tLbl = document.getElementById('ordTaxLabel');
+  if(tLbl) tLbl.textContent = 'GST ('+taxPct+'%)';
+  const sEl = document.getElementById('ordService');
+  if(sEl) sEl.textContent = '₹'+svc.toLocaleString();
   document.getElementById('ordDiscount').textContent  = '−₹'+disc.toLocaleString();
   document.getElementById('ordTotal').textContent     = '₹'+total.toLocaleString();
 
@@ -432,7 +441,7 @@
     const res  = document.getElementById('couponResult');
     if (coupons[code]) {
       extraDisc = Math.round((base+tax-disc) * coupons[code]);
-      total = base + tax - disc - extraDisc;
+      total = base + tax - disc + svc - extraDisc;
       document.getElementById('ordTotal').textContent   = '₹'+total.toLocaleString();
       document.getElementById('ordCoupon').textContent  = '−₹'+extraDisc.toLocaleString();
       document.getElementById('extraDiscRow').style.display='flex';
