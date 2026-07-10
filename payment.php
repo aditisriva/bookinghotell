@@ -345,8 +345,9 @@
 
   const params   = new URLSearchParams(window.location.search);
   const roomKey  = params.get('room')    || 'deluxe';
-  const checkin  = params.get('checkin') || (() => { const d=new Date(); d.setDate(d.getDate()+1); return d.toISOString().split('T')[0]; })();
-  const checkout = params.get('checkout')|| (() => { const d=new Date(); d.setDate(d.getDate()+2); return d.toISOString().split('T')[0]; })();
+  const guests   = (typeof bhSearch !== 'undefined' ? bhSearch.guests() : parseInt(params.get('guests')||'2'));
+  const checkin  = (typeof bhSearch !== 'undefined' ? bhSearch.checkin() : params.get('checkin')) || ''; d.setDate(d.getDate()+1); return d.toISOString().split('T')[0]; })();
+  const checkout = (typeof bhSearch !== 'undefined' ? bhSearch.checkout() : params.get('checkout')) || ''; d.setDate(d.getDate()+2); return d.toISOString().split('T')[0]; })();
   const room     = rooms[roomKey] || rooms['deluxe'];
 
   const ci = new Date(checkin), co = new Date(checkout);
@@ -467,6 +468,7 @@
     }, 2200);
   }
 </script>
+<script src="search-state.js"></script>
 </body>
 </html>
 

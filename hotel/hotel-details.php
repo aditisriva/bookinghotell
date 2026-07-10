@@ -811,5 +811,6 @@ function hdApplySearch() {
 // Direct search button (no modal)
 function hdDoSearch() { hdOpenModal("city"); }
 </script>
+<script src="search-state.js"></script>
 </body>
 </html>
