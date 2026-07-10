@@ -61,59 +61,110 @@ $full_qs_str = $full_qs ? '?' . implode('&', $full_qs) : '';
   </div>
 </nav>
 
-<!-- ========== STICKY SEARCH BAR ========== -->
+<!-- ========== COMPACT SEARCH SUMMARY BAR ========== -->
 <div class="hd-search-bar" id="hdSearchBar">
   <div class="container">
-    <form class="hd-search-form" onsubmit="hdSearch(event)">
-      <!-- Destination -->
-      <div class="hd-search-field">
-        <div class="hd-search-label"><i class="bi bi-geo-alt-fill"></i> Destination</div>
-        <input type="text" class="hd-search-input" id="hdCity"
-          value="<?php echo htmlspecialchars($city_hd_lbl . ', India'); ?>"
-          placeholder="City or Hotel"/>
-      </div>
-      <div class="hd-search-sep"></div>
-      <!-- Check-in -->
-      <div class="hd-search-field">
-        <div class="hd-search-label"><i class="bi bi-calendar-check"></i> Check-In</div>
-        <input type="date" class="hd-search-input" id="hdCheckin"
-          value="<?php echo htmlspecialchars($checkin_raw); ?>"/>
-        <?php if ($checkin_fmt): ?>
-        <div class="hd-search-sub"><?php echo htmlspecialchars($checkin_fmt); ?></div>
-        <?php endif; ?>
-      </div>
-      <div class="hd-search-sep"></div>
-      <!-- Check-out -->
-      <div class="hd-search-field">
-        <div class="hd-search-label"><i class="bi bi-calendar-x"></i> Check-Out</div>
-        <input type="date" class="hd-search-input" id="hdCheckout"
-          value="<?php echo htmlspecialchars($checkout_raw); ?>"/>
-        <?php if ($checkout_fmt): ?>
-        <div class="hd-search-sub"><?php echo htmlspecialchars($checkout_fmt); ?>
-          <?php if ($nights > 1): ?> · <strong><?php echo $nights; ?> Nights</strong><?php endif; ?>
+    <div class="hd-summary-row" id="hdSummaryRow">
+
+      <!-- Destination segment -->
+      <div class="hd-seg" onclick="hdOpenModal('city')">
+        <i class="bi bi-geo-alt-fill hd-seg-icon"></i>
+        <div class="hd-seg-body">
+          <div class="hd-seg-val" id="hdDispCity"><?php echo htmlspecialchars($city_hd_lbl ? $city_hd_lbl . ', India' : 'Select Destination'); ?></div>
         </div>
-        <?php endif; ?>
+        <i class="bi bi-chevron-down hd-seg-chevron"></i>
       </div>
-      <div class="hd-search-sep"></div>
-      <!-- Guests -->
-      <div class="hd-search-field">
-        <div class="hd-search-label"><i class="bi bi-people-fill"></i> Rooms & Guests</div>
-        <select class="hd-search-input" id="hdGuests">
-          <option value="1" <?php echo $guests_raw==1?'selected':''; ?>>1 Room, 1 Guest</option>
-          <option value="2" <?php echo (!$guests_raw||$guests_raw==2)?'selected':''; ?>>1 Room, 2 Guests</option>
-          <option value="3" <?php echo $guests_raw==3?'selected':''; ?>>1 Room, 3 Guests</option>
-          <option value="4" <?php echo $guests_raw==4?'selected':''; ?>>2 Rooms, 4 Guests</option>
-          <option value="6" <?php echo $guests_raw>=6?'selected':''; ?>>3 Rooms, 6 Guests</option>
-        </select>
-        <div class="hd-search-sub"><?php echo htmlspecialchars($guests_label); ?></div>
+
+      <div class="hd-seg-div"></div>
+
+      <!-- Check-in segment -->
+      <div class="hd-seg" onclick="hdOpenModal('checkin')">
+        <i class="bi bi-calendar-check hd-seg-icon"></i>
+        <div class="hd-seg-body">
+          <div class="hd-seg-tiny">Check-in</div>
+          <div class="hd-seg-val" id="hdDispCheckin"><?php echo $checkin_fmt ?: 'Select Date'; ?></div>
+        </div>
+        <i class="bi bi-chevron-down hd-seg-chevron"></i>
       </div>
+
+      <div class="hd-seg-div"></div>
+
+      <!-- Check-out segment -->
+      <div class="hd-seg" onclick="hdOpenModal('checkout')">
+        <i class="bi bi-calendar-x hd-seg-icon"></i>
+        <div class="hd-seg-body">
+          <div class="hd-seg-tiny">Check-out<?php if ($nights > 1): ?> <span class="hd-nights-badge"><?php echo $nights; ?> Nights</span><?php endif; ?></div>
+          <div class="hd-seg-val" id="hdDispCheckout"><?php echo $checkout_fmt ?: 'Select Date'; ?></div>
+        </div>
+        <i class="bi bi-chevron-down hd-seg-chevron"></i>
+      </div>
+
+      <div class="hd-seg-div"></div>
+
+      <!-- Guests segment -->
+      <div class="hd-seg" onclick="hdOpenModal('guests')">
+        <i class="bi bi-people-fill hd-seg-icon"></i>
+        <div class="hd-seg-body">
+          <div class="hd-seg-tiny">Rooms & Guests</div>
+          <div class="hd-seg-val" id="hdDispGuests"><?php echo htmlspecialchars($guests_label ?: '1 Room, 2 Guests'); ?></div>
+        </div>
+        <i class="bi bi-chevron-down hd-seg-chevron"></i>
+      </div>
+
       <!-- Search Button -->
-      <button type="submit" class="hd-search-btn">
-        <i class="bi bi-search me-1"></i>Search
+      <button class="hd-search-btn" onclick="hdDoSearch()">
+        <i class="bi bi-search"></i><span class="hd-btn-txt"> Search</span>
       </button>
-    </form>
+
+    </div>
   </div>
 </div>
+
+<!-- Edit Search Modal -->
+<div class="modal fade" id="hdEditModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="border:none;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.18)">
+      <div class="modal-header" style="background:linear-gradient(135deg,#0f172a,#1e3a8a);border-bottom:none;border-radius:16px 16px 0 0;padding:1.1rem 1.5rem">
+        <h6 class="modal-title fw-700 text-white"><i class="bi bi-search me-2"></i>Modify Search</h6>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <label class="form-label small fw-700 text-muted text-uppercase" style="letter-spacing:.06em">Destination</label>
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0"><i class="bi bi-geo-alt-fill text-primary"></i></span>
+              <input type="text" class="form-control border-start-0" id="hdModalCity" placeholder="City or hotel name" style="font-weight:600"/>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <label class="form-label small fw-700 text-muted text-uppercase" style="letter-spacing:.06em">Check-In</label>
+            <input type="date" class="form-control fw-600" id="hdModalCheckin"/>
+          </div>
+          <div class="col-6 col-md-3">
+            <label class="form-label small fw-700 text-muted text-uppercase" style="letter-spacing:.06em">Check-Out</label>
+            <input type="date" class="form-control fw-600" id="hdModalCheckout"/>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label small fw-700 text-muted text-uppercase" style="letter-spacing:.06em">Rooms & Guests</label>
+            <select class="form-select fw-600" id="hdModalGuests">
+              <option value="1">1 Room, 1 Guest</option>
+              <option value="2">1 Room, 2 Guests</option>
+              <option value="3">1 Room, 3 Guests</option>
+              <option value="4">2 Rooms, 4 Guests</option>
+              <option value="6">3 Rooms, 6 Guests</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="background:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 16px 16px">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary fw-700 px-4" onclick="hdApplySearch()"><i class="bi bi-search me-2"></i>Search Hotels</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- ========== BREADCRUMB ========== -->
 <div class="bg-white border-bottom py-2">
@@ -695,44 +746,70 @@ $full_qs_str = $full_qs ? '?' . implode('&', $full_qs) : '';
 </button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="navbar.js"></script>
 <script>
-  window.addEventListener("scroll", () => {
-    document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 50);
-    document.getElementById("backToTop")?.classList.toggle("show", window.scrollY > 300);
+// State — persisted from URL
+var _hdCity    = "<?php echo addslashes($city_hd_lbl ? $city_hd_lbl . ', India' : '); ?>";
+var _hdCheckin = "<?php echo addslashes($checkin_raw); ?>";
+var _hdCheckout= "<?php echo addslashes($checkout_raw); ?>";
+var _hdGuests  = "<?php echo $guests_raw ?: 2; ?>";
+
+// Navbar scroll
+window.addEventListener("scroll", function() {
+  document.getElementById("mainNav").classList.toggle("scrolled", window.scrollY > 50);
+});
+
+// Wishlist toggle
+document.querySelectorAll(".btn-wishlist").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    var icon = btn.querySelector("i");
+    icon.classList.toggle("bi-heart");
+    icon.classList.toggle("bi-heart-fill");
+    icon.classList.toggle("text-danger");
   });
-  document.querySelectorAll(".btn-wishlist").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const icon = btn.querySelector("i");
-      icon.classList.toggle("bi-heart");
-      icon.classList.toggle("bi-heart-fill");
-      icon.classList.toggle("text-danger");
-    });
-  });
-  // Hotel Details top search bar
-  function hdSearch(e) {
-    e.preventDefault();
-    var city   = (document.getElementById("hdCity")?.value   || "").trim().toLowerCase().replace(/,.*$/, "").trim();
-    var ci     = document.getElementById("hdCheckin")?.value  || "";
-    var co     = document.getElementById("hdCheckout")?.value || "";
-    var guests = document.getElementById("hdGuests")?.value   || "2";
-    var qs = [];
-    if (city)   qs.push("city="     + encodeURIComponent(city));
-    if (ci)     qs.push("checkin="  + encodeURIComponent(ci));
-    if (co)     qs.push("checkout=" + encodeURIComponent(co));
-    if (guests) qs.push("guests="   + encodeURIComponent(guests));
-    window.location.href = "hotels.php" + (qs.length ? "?" + qs.join("&") : "");
+});
+
+// Open modal and pre-fill values
+function hdOpenModal(focus) {
+  var mc = document.getElementById("hdModalCity");
+  var mi = document.getElementById("hdModalCheckin");
+  var mo = document.getElementById("hdModalCheckout");
+  var mg = document.getElementById("hdModalGuests");
+  if (mc) mc.value = _hdCity.replace(', India', '').trim();
+  if (mi) mi.value = _hdCheckin;
+  if (mo) mo.value = _hdCheckout;
+  if (mg) {
+    for (var k = 0; k < mg.options.length; k++) {
+      if (mg.options[k].value == _hdGuests) { mg.selectedIndex = k; break; }
+    }
   }
-  // Sync top search dates with sidebar booking card
-  document.addEventListener("DOMContentLoaded", function() {
-    var hdCi = document.getElementById("hdCheckin");
-    var hdCo = document.getElementById("hdCheckout");
-    var bkCi = document.getElementById("bkCheckin");
-    var bkCo = document.getElementById("bkCheckout");
-    function sync() { if(bkCi&&hdCi)bkCi.value=hdCi.value; if(bkCo&&hdCo)bkCo.value=hdCo.value; }
-    if(hdCi) hdCi.addEventListener("change", sync);
-    if(hdCo) hdCo.addEventListener("change", sync);
-  });
+  var modal = new bootstrap.Modal(document.getElementById("hdEditModal"));
+  modal.show();
+  setTimeout(function() {
+    if (focus === "checkin" && mi) mi.focus();
+    else if (focus === "checkout" && mo) mo.focus();
+    else if (focus === "city" && mc) mc.focus();
+  }, 300);
+}
+
+// Apply search from modal
+function hdApplySearch() {
+  var city   = (document.getElementById("hdModalCity")?.value   || "").trim().toLowerCase().replace(/,.*$/, "").trim();
+  var ci     = document.getElementById("hdModalCheckin")?.value  || "";
+  var co     = document.getElementById("hdModalCheckout")?.value || "";
+  var guests = document.getElementById("hdModalGuests")?.value   || "2";
+  var qs = [];
+  if (city)   qs.push("city="     + encodeURIComponent(city));
+  if (ci)     qs.push("checkin="  + encodeURIComponent(ci));
+  if (co)     qs.push("checkout=" + encodeURIComponent(co));
+  if (guests) qs.push("guests="   + encodeURIComponent(guests));
+  bootstrap.Modal.getInstance(document.getElementById("hdEditModal"))?.hide();
+  window.location.href = "hotels.php" + (qs.length ? "?" + qs.join("&") : "");
+}
+
+// Direct search button (no modal)
+function hdDoSearch() { hdOpenModal("city"); }
 </script>
 </body>
 </html>
