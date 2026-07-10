@@ -166,12 +166,12 @@ function initLoginPage() {
       localStorage.setItem('bh_user', JSON.stringify({ name: name.charAt(0).toUpperCase() + name.slice(1), email: idVal }));
       alertSuccess?.classList.remove('d-none');
       showToast('Signed in successfully! Welcome back 👋', 'success');
-      setTimeout(() => pageTransition('index.html'), 1200);
+      setTimeout(() => pageTransition('index.php'), 1200);
     }, 1400);
   });
 
   document.querySelectorAll('#goSignup, #switchToSignup').forEach(link => {
-    link.addEventListener('click', (e) => { e.preventDefault(); pageTransition('signup.html'); });
+    link.addEventListener('click', (e) => { e.preventDefault(); pageTransition('signup.php'); });
   });
 }
 
@@ -256,7 +256,7 @@ function initSignupPage() {
       showToast('Account created! Welcome to bookHotel 🎉', 'success');
       form.reset();
       if (strengthWrap) strengthWrap.style.display = 'none';
-      setTimeout(() => pageTransition('login.html'), 2000);
+      setTimeout(() => pageTransition('login.php'), 2000);
     }, 1800);
   });
 }
