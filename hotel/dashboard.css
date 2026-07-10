@@ -59,7 +59,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:linear-gradient(180deg,
 .ds-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:50px;letter-spacing:.04em;text-transform:uppercase}
 .ds-badge.confirmed{background:var(--grn-lt);color:#065f46}.ds-badge.pending{background:#fef3c7;color:#78350f}.ds-badge.cancelled{background:var(--red-lt);color:#991b1b}
 .ds-badge.checkin{background:var(--pr-lt);color:#1e3a8a}.ds-badge.checkout{background:var(--purp-lt);color:#4c1d95}
-.ds-badge.available{background:var(--grn-lt);color:#065f46}.ds-badge.occupied{background:var(--red-lt);color:#991b1b}.ds-badge.maintenance{background:#fef3c7;color:#78350f}
+.ds-badge.available{background:var(--grn-lt);color:#065f46}.ds-badge.occupied{background:var(--red-lt);color:#991b1b}.ds-badge.maintenance{background:#fef3c7;color:#78350f}.ds-badge.blocked{background:#e2e8f0;color:#334155}
 .ds-badge.new{background:var(--pr-lt);color:#1e3a8a}
 .ds-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;padding:.55rem 1.1rem;border-radius:8px;cursor:pointer;border:1.5px solid transparent;text-decoration:none;transition:all var(--t);white-space:nowrap}
 .ds-btn:active{transform:scale(.97)}

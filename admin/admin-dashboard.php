@@ -8,10 +8,10 @@ include 'partials/header.php';
     <div>
       <span class="hero-pill"><i class="bi bi-shield-check"></i> Platform Administration Console</span>
       <h1 class="hero-title">Welcome back, Aditi. BookHotel is scaling smoothly across every market.</h1>
-      <p class="hero-sub">Oversee users, hotel managers, property listings, bookings, platform moderation, and business health from one central command center.</p>
+      <p class="hero-sub">Oversee users, hotel managers, property listings, bookings, and business health from one central command center.</p>
       <div class="d-flex flex-wrap gap-2 mt-3">
-        <a href="reports.php" class="ds-btn prim"><i class="bi bi-plus-circle"></i> Create Report</a>
-        <a href="bookings.php" class="ds-btn outl"><i class="bi bi-check2-circle"></i> Review Pending Approvals</a>
+        <a href="bookings.php" class="ds-btn prim"><i class="bi bi-check2-circle"></i> Review Pending Approvals</a>
+        <a href="users.php" class="ds-btn outl"><i class="bi bi-people-fill"></i> Manage Users</a>
       </div>
     </div>
     <div class="hero-metrics">
@@ -28,7 +28,7 @@ include 'partials/header.php';
   <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat purple"><div class="ds-si"><i class="bi bi-person-badge-fill"></i></div><div class="ds-sn">64</div><div class="ds-sl">Hotel Managers</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>4 awaiting approval</div></div></div>
   <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat gold"><div class="ds-si"><i class="bi bi-calendar2-check-fill"></i></div><div class="ds-sn">1,208</div><div class="ds-sl">Total Bookings</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>+6.8% weekly</div></div></div>
   <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat red"><div class="ds-si"><i class="bi bi-currency-dollar"></i></div><div class="ds-sn">₹42.6L</div><div class="ds-sl">Monthly Revenue</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>+18% vs last month</div></div></div>
-  <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat orange"><div class="ds-si"><i class="bi bi-hourglass-split"></i></div><div class="ds-sn">11</div><div class="ds-sl">Pending Actions</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>1 urgent review</div></div></div>
+  <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat orange"><div class="ds-si"><i class="bi bi-hourglass-split"></i></div><div class="ds-sn">11</div><div class="ds-sl">Pending Actions</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>Needs attention today</div></div></div>
 </div>
 
 <div class="row g-3 mb-4">
@@ -69,8 +69,6 @@ include 'partials/header.php';
           <div class="col-12 col-sm-6 col-xl-4"><a href="managers.php" class="module-card"><i class="bi bi-person-badge-fill"></i><strong>Managers</strong><span>Approve, suspend, and inspect hotel managers in one place.</span></a></div>
           <div class="col-12 col-sm-6 col-xl-4"><a href="hotels.php" class="module-card"><i class="bi bi-building"></i><strong>Hotels</strong><span>Manage listings, approve or reject hotels, and update status.</span></a></div>
           <div class="col-12 col-sm-6 col-xl-4"><a href="bookings.php" class="module-card"><i class="bi bi-calendar2-check-fill"></i><strong>Bookings</strong><span>Track reservations, update status, and handle cancellations.</span></a></div>
-          <div class="col-12 col-sm-6 col-xl-4"><a href="reviews.php" class="module-card"><i class="bi bi-star-fill"></i><strong>Reviews</strong><span>Moderate guest feedback and resolve review reports quickly.</span></a></div>
-          <div class="col-12 col-sm-6 col-xl-4"><a href="reports.php" class="module-card"><i class="bi bi-bar-chart-fill"></i><strong>Reports</strong><span>Review revenue, bookings, user growth, and hotel performance.</span></a></div>
           <div class="col-12 col-sm-6 col-xl-4"><a href="settings.php" class="module-card"><i class="bi bi-sliders"></i><strong>Settings</strong><span>Manage website preferences, contact details and policies.</span></a></div>
           <div class="col-12 col-sm-6 col-xl-4"><a href="profile.php" class="module-card"><i class="bi bi-person-circle"></i><strong>Profile</strong><span>Update personal information, password and security preferences.</span></a></div>
         </div>
@@ -83,7 +81,7 @@ include 'partials/header.php';
       <div class="ds-cb">
         <div class="activity-item"><div class="activity-icon blue"><i class="bi bi-person-plus"></i></div><div><div class="activity-title">New hotel manager approved</div><div class="activity-sub">Riya Kapoor was approved for Grand Horizons</div><div class="activity-time">12 mins ago</div></div></div>
         <div class="activity-item"><div class="activity-icon green"><i class="bi bi-building-check"></i></div><div><div class="activity-title">Hotel listing published</div><div class="activity-sub">Blue Peak Retreat is now live in the marketplace</div><div class="activity-time">45 mins ago</div></div></div>
-        <div class="activity-item"><div class="activity-icon gold"><i class="bi bi-chat-dots"></i></div><div><div class="activity-title">Review reported for moderation</div><div class="activity-sub">A suspicious review was flagged by the moderation queue</div><div class="activity-time">1 hour ago</div></div></div>
+        <div class="activity-item"><div class="activity-icon gold"><i class="bi bi-calendar2-check-fill"></i></div><div><div class="activity-title">New booking confirmed</div><div class="activity-sub">Rohan Gupta booked The Grand Palace for 3 nights</div><div class="activity-time">1 hour ago</div></div></div>
       </div>
     </div>
   </div>

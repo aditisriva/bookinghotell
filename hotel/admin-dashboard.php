@@ -27,6 +27,10 @@
       <a href="admin-rooms.php" class="ds-link"><i class="bi bi-door-open-fill"></i> Rooms</a>
       <a href="admin-bookings.php" class="ds-link"><i class="bi bi-calendar2-check-fill"></i> Bookings</a>
       <a href="admin-guests.php" class="ds-link"><i class="bi bi-people-fill"></i> Guests</a>
+      <div class="ds-sec">Inventory & Pricing</div>
+      <a href="admin-availability.php" class="ds-link"><i class="bi bi-calendar-range-fill"></i> Availability</a>
+      <a href="admin-pricing.php" class="ds-link"><i class="bi bi-tags-fill"></i> Pricing</a>
+      <a href="admin-discounts.php" class="ds-link"><i class="bi bi-percent"></i> Discounts</a>
       <div class="ds-sec">Insights</div>
       <a href="admin-reviews.php" class="ds-link"><i class="bi bi-star-fill"></i> Reviews</a>
       <a href="admin-revenue.php" class="ds-link"><i class="bi bi-bar-chart-fill"></i> Revenue</a>
@@ -96,12 +100,14 @@
       </section>
 
       <div class="row g-3 mb-4">
-        <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat blue"><div class="ds-si"><i class="bi bi-door-open-fill"></i></div><div class="ds-sn">30</div><div class="ds-sl">Total Rooms</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>3 ready for upgrade</div></div></div>
-        <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat green"><div class="ds-si"><i class="bi bi-person-check-fill"></i></div><div class="ds-sn">19</div><div class="ds-sl">Occupied</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>High demand this week</div></div></div>
-        <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat gold"><div class="ds-si"><i class="bi bi-box-arrow-in-right"></i></div><div class="ds-sn">6</div><div class="ds-sl">Check-ins Today</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>All prepared</div></div></div>
-        <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat red"><div class="ds-si"><i class="bi bi-bell-fill"></i></div><div class="ds-sn">8</div><div class="ds-sl">Pending Requests</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>2 urgent requests</div></div></div>
-        <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat purple"><div class="ds-si"><i class="bi bi-currency-rupee"></i></div><div class="ds-sn">₹4.2L</div><div class="ds-sl">Revenue Today</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>+12% vs yesterday</div></div></div>
-        <div class="col-12 col-sm-6 col-xl-4"><div class="ds-stat orange"><div class="ds-si"><i class="bi bi-star-fill"></i></div><div class="ds-sn">5</div><div class="ds-sl">Review Alerts</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>Reply needed</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat blue"><div class="ds-si"><i class="bi bi-door-open-fill"></i></div><div class="ds-sn">30</div><div class="ds-sl">Total Rooms</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>3 ready for upgrade</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat green"><div class="ds-si"><i class="bi bi-person-check-fill"></i></div><div class="ds-sn">19</div><div class="ds-sl">Occupied</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>63% Occupancy</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat gold"><div class="ds-si"><i class="bi bi-tools"></i></div><div class="ds-sn">2</div><div class="ds-sl">Maintenance</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>Rooms 204 & 305</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat orange"><div class="ds-si"><i class="bi bi-percent"></i></div><div class="ds-sn">4</div><div class="ds-sl">Active Discounts</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>Driving 30% bookings</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat gold"><div class="ds-si"><i class="bi bi-box-arrow-in-right"></i></div><div class="ds-sn">6</div><div class="ds-sl">Check-ins Today</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>All prepared</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat red"><div class="ds-si"><i class="bi bi-bell-fill"></i></div><div class="ds-sn">8</div><div class="ds-sl">Pending Requests</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>2 urgent requests</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat purple"><div class="ds-si"><i class="bi bi-currency-rupee"></i></div><div class="ds-sn">₹4.2L</div><div class="ds-sl">Revenue Today</div><div class="ds-tr up"><i class="bi bi-arrow-up-short"></i>+12% vs yesterday</div></div></div>
+        <div class="col-12 col-sm-6 col-xl-3"><div class="ds-stat blue"><div class="ds-si"><i class="bi bi-star-fill"></i></div><div class="ds-sn">5</div><div class="ds-sl">Review Alerts</div><div class="ds-tr down"><i class="bi bi-arrow-down-short"></i>Reply needed</div></div></div>
       </div>
 
       <div class="row g-3 mb-4">
@@ -142,6 +148,9 @@
                 <div class="col-12 col-sm-6 col-xl-4"><a href="admin-notifications.php" class="module-card"><i class="bi bi-bell-fill"></i><strong>Notifications</strong><span>Stay on top of service alerts, requests, and updates.</span></a></div>
                 <div class="col-12 col-sm-6 col-xl-4"><a href="admin-hotel-profile.php" class="module-card"><i class="bi bi-building"></i><strong>Hotel Profile</strong><span>Keep your property details, amenities, and image updated.</span></a></div>
                 <div class="col-12 col-sm-6 col-xl-4"><a href="admin-settings.php" class="module-card"><i class="bi bi-sliders"></i><strong>Settings</strong><span>Adjust hotel preferences, policies, and team access.</span></a></div>
+                <div class="col-12 col-sm-6 col-xl-4"><a href="admin-availability.php" class="module-card"><i class="bi bi-calendar-range-fill"></i><strong>Availability</strong><span>Manage room availability and block dates.</span></a></div>
+                <div class="col-12 col-sm-6 col-xl-4"><a href="admin-pricing.php" class="module-card"><i class="bi bi-tags-fill"></i><strong>Pricing</strong><span>Set base rates, weekend, and seasonal pricing.</span></a></div>
+                <div class="col-12 col-sm-6 col-xl-4"><a href="admin-discounts.php" class="module-card"><i class="bi bi-percent"></i><strong>Discounts</strong><span>Create offers, promo codes, and special rates.</span></a></div>
               </div>
             </div>
           </div>

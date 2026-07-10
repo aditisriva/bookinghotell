@@ -750,7 +750,7 @@ $full_qs_str = $full_qs ? '?' . implode('&', $full_qs) : '';
 <script src="navbar.js"></script>
 <script>
 // State — persisted from URL
-var _hdCity    = "<?php echo addslashes($city_hd_lbl ? $city_hd_lbl . ', India' : '); ?>";
+var _hdCity    = "<?php echo addslashes($city_hd_lbl ? $city_hd_lbl . ', India' : ''); ?>";
 var _hdCheckin = "<?php echo addslashes($checkin_raw); ?>";
 var _hdCheckout= "<?php echo addslashes($checkout_raw); ?>";
 var _hdGuests  = "<?php echo $guests_raw ?: 2; ?>";
