@@ -1,4 +1,5 @@
-﻿<?php
+<?php
+  session_start();
   $site_name    = "bookHotel";
   $current_year = date("Y");
   // Preserve search params from URL; fall back to tomorrow/day+2 only if missing
@@ -6,6 +7,8 @@
   $checkout   = (!empty($_GET["checkout"])) ? trim($_GET["checkout"]) : date("Y-m-d", strtotime("+2 days"));
   $city_idx   = (!empty($_GET["city"]))   ? trim($_GET["city"])   : "";
   $guests_idx = (!empty($_GET["guests"])) ? (int)$_GET["guests"]  : 2;
+  $is_logged_in   = isset($_SESSION['user_id']);
+  $user_firstname = $is_logged_in ? htmlspecialchars($_SESSION['user_firstname'] ?? $_SESSION['user_name'] ?? 'User') : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +39,21 @@
         <li class="nav-item"><a class="nav-link" href="my-bookings.php">My Bookings</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
         <li class="nav-item ms-lg-3">
-          <a class="btn btn-outline-warning btn-sm px-3" href="login.php">Login / Sign Up</a>
+          <?php if ($is_logged_in): ?>
+            <div class="dropdown">
+              <a class="btn btn-warning btn-sm px-3 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-fill me-1"></i><?= $user_firstname ?>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="profile.php"><i class="bi bi-person me-2"></i>My Profile</a></li>
+                <li><a class="dropdown-item" href="my-bookings.php"><i class="bi bi-calendar-check me-2"></i>My Bookings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+              </ul>
+            </div>
+          <?php else: ?>
+            <a class="btn btn-outline-warning btn-sm px-3" href="login.php">Login / Sign Up</a>
+          <?php endif; ?>
         </li>
       </ul>
     </div>

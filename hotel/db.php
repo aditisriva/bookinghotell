@@ -7,7 +7,7 @@
 // Database credentials
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', ''); // Set your local DB password here
 define('DB_NAME', 'bookhotel_db');
 define('DB_PORT', 3307);
 

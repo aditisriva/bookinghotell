@@ -289,7 +289,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 
-<script src="auth.js"></script>
+<script src="auth.js?v=2"></script>
 </body>
 </html>
 

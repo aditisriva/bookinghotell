@@ -135,7 +135,7 @@ function initLoginPage() {
     }, 1200);
   });
 
-  // Form submit — localStorage based
+  // Form submit — submit to PHP for real authentication
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     let valid = true;
@@ -155,19 +155,7 @@ function initLoginPage() {
     loginBtnLabel?.classList.add('d-none');
     loginBtnLoader?.classList.remove('d-none');
     if (loginBtn) loginBtn.disabled = true;
-
-    setTimeout(() => {
-      loginBtnLabel?.classList.remove('d-none');
-      loginBtnLoader?.classList.add('d-none');
-      if (loginBtn) loginBtn.disabled = false;
-
-      // Save user to localStorage
-      const name = isValidEmail(idVal) ? idVal.split('@')[0] : idVal;
-      localStorage.setItem('bh_user', JSON.stringify({ name: name.charAt(0).toUpperCase() + name.slice(1), email: idVal }));
-      alertSuccess?.classList.remove('d-none');
-      showToast('Signed in successfully! Welcome back 👋', 'success');
-      setTimeout(() => pageTransition('index.php'), 1200);
-    }, 1400);
+    form.submit();
   });
 
   document.querySelectorAll('#goSignup, #switchToSignup').forEach(link => {
@@ -178,18 +166,18 @@ function initLoginPage() {
 /* ── SIGNUP PAGE ── */
 function initSignupPage() {
   const form = document.getElementById('signupForm');
-  const fullName = document.getElementById('fullName');
+  const fullName = document.getElementById('full_name');
   const email    = document.getElementById('email');
   const mobile   = document.getElementById('mobile');
   const password = document.getElementById('password');
-  const confirmPassword = document.getElementById('confirmPassword');
-  const agreeTerms = document.getElementById('agreeTerms');
-  const fullNameErr = document.getElementById('fullNameErr');
-  const emailErr    = document.getElementById('emailErr');
-  const mobileErr   = document.getElementById('mobileErr');
-  const passwordErr = document.getElementById('passwordErr');
-  const confirmErr  = document.getElementById('confirmErr');
-  const termsErr    = document.getElementById('termsErr');
+  const confirmPassword = document.getElementById('confirm_password');
+  const agreeTerms = document.getElementById('agree_terms');
+  const fullNameErr = document.getElementById('fullNameError');
+  const emailErr    = document.getElementById('emailError');
+  const mobileErr   = document.getElementById('mobileError');
+  const passwordErr = document.getElementById('passwordError');
+  const confirmErr  = document.getElementById('confirmPasswordError');
+  const termsErr    = document.getElementById('termsError');
   const signupBtn   = document.getElementById('signupBtn');
   const signupBtnLabel  = document.getElementById('signupBtnLabel');
   const signupBtnLoader = document.getElementById('signupBtnLoader');
@@ -243,20 +231,11 @@ function initSignupPage() {
     if (agreeTerms && !agreeTerms.checked) { if (termsErr) termsErr.textContent = 'You must agree to the Terms.'; termsOk = false; }
     else { if (termsErr) termsErr.textContent = ''; }
     if (!checks.every(Boolean) || !termsOk) { if (alertErrorMsg) alertErrorMsg.textContent = 'Please fix the errors above.'; alertError?.classList.remove('d-none'); form.querySelector('.is-invalid')?.focus(); return; }
+    // All validations passed — show loading state then submit to PHP
     alertError?.classList.add('d-none');
     signupBtnLabel?.classList.add('d-none');
     signupBtnLoader?.classList.remove('d-none');
     if (signupBtn) signupBtn.disabled = true;
-
-    setTimeout(() => {
-      signupBtnLabel?.classList.remove('d-none');
-      signupBtnLoader?.classList.add('d-none');
-      if (signupBtn) signupBtn.disabled = false;
-      alertSuccess?.classList.remove('d-none');
-      showToast('Account created! Welcome to bookHotel 🎉', 'success');
-      form.reset();
-      if (strengthWrap) strengthWrap.style.display = 'none';
-      setTimeout(() => pageTransition('login.php'), 2000);
-    }, 1800);
+    form.submit();
   });
 }
